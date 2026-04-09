@@ -15,6 +15,9 @@ import {
   MainBannerFightControls,
   MainBannerIconButton,
   MainBannerMorePanel,
+  MainBannerTurnButton,
+  MainBannerGrid,
+  MainBannerGridSlot,
 } from "@/registry/dofus1/ui/main-banner";
 import { Button } from "@/registry/dofus1/ui/button";
 
@@ -48,7 +51,13 @@ import { Button } from "@/registry/dofus1/ui/button";
       <MainBannerIconButton icon="title" />
     </MainBannerMorePanel>
     <MainBannerRightPanel />
-    <MainBannerSpells />
+    <MainBannerSpells>
+      <MainBannerGrid tabs={[{ value: "spells", label: "Spells" }, { value: "items", label: "Itm." }]}>
+        {Array.from({ length: 14 }, (_, i) => (
+          <MainBannerGridSlot key={i} />
+        ))}
+      </MainBannerGrid>
+    </MainBannerSpells>
   </MainBanner>
 </PreviewCard>
 
@@ -74,12 +83,25 @@ import { Button } from "@/registry/dofus1/ui/button";
       <MainBannerIconButton icon="guild" />
       <MainBannerIconButton icon="pvp" />
     </MainBannerButtons>
+    <MainBannerMorePanel>
+      <MainBannerIconButton icon="mount" />
+      <MainBannerIconButton icon="job" />
+      <MainBannerIconButton icon="achievement" />
+      <MainBannerIconButton icon="event" />
+      <MainBannerIconButton icon="title" />
+    </MainBannerMorePanel>
+    <MainBannerTurnButton />
     <MainBannerFightControls>
       <Button variant="rectangle">Give Up</Button>
-      <Button variant="rectangle">Next Turn</Button>
     </MainBannerFightControls>
     <MainBannerRightPanel />
-    <MainBannerSpells />
+    <MainBannerSpells>
+      <MainBannerGrid tabs={[{ value: "spells", label: "Spells" }, { value: "items", label: "Itm." }]}>
+        {Array.from({ length: 14 }, (_, i) => (
+          <MainBannerGridSlot key={i} />
+        ))}
+      </MainBannerGrid>
+    </MainBannerSpells>
   </MainBanner>
 </PreviewCard>
 

@@ -25,6 +25,10 @@ import QuestsIcon from "./icons/banner/quests";
 import SpellsIcon from "./icons/banner/spells";
 import StatsIcon from "./icons/banner/stats";
 import TitleIcon from "./icons/banner/title";
+import {
+  TurnButtonDown,
+  TurnButtonUp,
+} from "./icons/banner/turn-button";
 
 const BANNER_ICONS = {
   stats: StatsIcon,
@@ -46,6 +50,7 @@ const BANNER_ICONS = {
 
 type BannerIconName = keyof typeof BANNER_ICONS;
 
+import { Tabs } from "@base-ui/react/tabs";
 import { cn } from "@/lib/utils";
 
 type BannerMode = "normal" | "fight";
@@ -500,6 +505,122 @@ function MainBannerSpells({
   );
 }
 
+function MainBannerTurnButton({
+  className,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      type="button"
+      className={cn(
+        "group/turn absolute z-10 cursor-pointer border-none bg-transparent p-0 overflow-visible",
+        "left-[calc(470.5px*var(--resolution-factor))]",
+        "top-[calc(89.2px*var(--resolution-factor))]",
+        "w-[calc(41px*var(--resolution-factor))]",
+        "h-[calc(24px*var(--resolution-factor))]",
+        className,
+      )}
+      {...props}
+    >
+      <TurnButtonUp className="absolute inset-0 w-full h-full pointer-events-none group-active/turn:opacity-0" />
+      <TurnButtonDown className="absolute inset-0 w-full h-full pointer-events-none opacity-0 group-active/turn:opacity-100" />
+    </button>
+  );
+}
+
+function MainBannerGridSlot({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <div
+      className={cn(
+        "relative",
+        "w-[calc(25px*var(--resolution-factor))]",
+        "h-[calc(25px*var(--resolution-factor))]",
+        "bg-[#beb998] border-none",
+        "shadow-[inset_calc(1px*var(--resolution-factor))_calc(1px*var(--resolution-factor))_0_0_#877b63,inset_calc(-1px*var(--resolution-factor))_calc(-1px*var(--resolution-factor))_0_0_#d1ccb6]",
+        "hover:shadow-[inset_0_0_0_calc(2px*var(--resolution-factor))_#ff6600]",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+}
+
+function MainBannerGridTab({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<typeof Tabs.Tab>) {
+  return (
+    <Tabs.Tab
+      className={cn(
+        "cursor-pointer p-0 m-0 border-none",
+        "w-[calc(16px*var(--resolution-factor))]",
+        "h-[calc(31.5px*var(--resolution-factor))]",
+        "text-[calc(9px*var(--resolution-factor))]",
+        "font-[Verdana,sans-serif]",
+        "[writing-mode:vertical-rl] [text-orientation:mixed]",
+        "bg-[linear-gradient(to_right,#514A3C_70%,#3d3729)] text-white font-normal",
+        "data-active:bg-[linear-gradient(to_right,#B4AC8D_70%,#9a9378)] data-active:text-[#514A3C] data-active:font-bold",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </Tabs.Tab>
+  );
+}
+
+function MainBannerGrid({
+  className,
+  children,
+  tabs,
+  defaultValue,
+}: {
+  className?: string;
+  children?: ReactNode;
+  tabs?: { value: string; label: string }[];
+  defaultValue?: string;
+}) {
+  return (
+    <Tabs.Root
+      defaultValue={defaultValue ?? tabs?.[0]?.value}
+      className={cn(
+        "flex items-start h-full",
+        "pl-[calc(38.6px*var(--resolution-factor))]",
+        "pt-[calc(8px*var(--resolution-factor))]",
+        "gap-[calc(3px*var(--resolution-factor))]",
+        className,
+      )}
+    >
+      <div
+        className={cn(
+          "grid grid-cols-[repeat(7,auto)]",
+          "mt-[calc(5px*var(--resolution-factor))]",
+          "gap-x-[calc(3px*var(--resolution-factor))]",
+          "gap-y-[calc(4px*var(--resolution-factor))]",
+        )}
+      >
+        {children}
+      </div>
+      {tabs && (
+        <Tabs.List className="flex flex-col gap-[calc(1px*var(--resolution-factor))]">
+          {tabs.map(({ value, label }) => (
+            <MainBannerGridTab key={value} value={value}>
+              {label}
+            </MainBannerGridTab>
+          ))}
+        </Tabs.List>
+      )}
+    </Tabs.Root>
+  );
+}
+
 function MainBannerFightControls({
   className,
   children,
@@ -537,5 +658,9 @@ export {
   MainBannerIconButton,
   MainBannerMorePanel,
   MainBannerRightPanel,
+  MainBannerGrid,
+  MainBannerGridSlot,
+  MainBannerGridTab,
   MainBannerSpells,
+  MainBannerTurnButton,
 };
