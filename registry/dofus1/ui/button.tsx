@@ -23,7 +23,7 @@ const buttonVariants = cva(
         rectangle:
           "rounded-[calc(4px*var(--resolution-factor))] px-[calc(4px*var(--resolution-factor))]",
       },
-      border: {
+      borderColor: {
         brown:
           "border-button-border active:border-button-border-active",
         white:
@@ -32,7 +32,7 @@ const buttonVariants = cva(
     },
     defaultVariants: {
       variant: "pill",
-      border: "brown",
+      borderColor: "brown",
     },
   },
 );
@@ -46,7 +46,7 @@ interface ButtonProps
 function Button({
   className,
   variant,
-  border,
+  borderColor,
   asChild = false,
   children,
   ...props
@@ -55,7 +55,7 @@ function Button({
 
   return (
     <Comp
-      className={cn(buttonVariants({ variant, border, className }))}
+      className={cn(buttonVariants({ variant, borderColor, className }))}
       {...props}
     >
       {children}

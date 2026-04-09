@@ -401,7 +401,7 @@ function InlineSvg({ src, className }: { src: string; className?: string }) {
         svgCache.set(resolvedSrc, text);
         setSvg(text);
       });
-  }, [src]);
+  }, [resolvedSrc]);
 
   if (!svg) return null;
 

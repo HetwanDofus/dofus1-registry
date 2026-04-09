@@ -11,11 +11,11 @@ import { Button } from "@/registry/dofus1/ui/button";
 
 ## Preview — White Border
 
-<PreviewCard><div className="flex gap-4 items-center flex-wrap"><Button border="white">Pill</Button><Button variant="rectangle" border="white">Rectangle</Button><Button border="white" disabled>Disabled</Button></div></PreviewCard>
+<PreviewCard><div className="flex gap-4 items-center flex-wrap"><Button borderColor="white">Pill</Button><Button variant="rectangle" borderColor="white">Rectangle</Button><Button borderColor="white" disabled>Disabled</Button></div></PreviewCard>
 
 ## Preview — All Variants
 
-<PreviewCard><div className="flex flex-col gap-4 items-center"><div className="flex gap-4 items-center"><Button>Pill Brown</Button><Button border="white">Pill White</Button></div><div className="flex gap-4 items-center"><Button variant="rectangle">Rect Brown</Button><Button variant="rectangle" border="white">Rect White</Button></div><div className="flex gap-4 items-center"><Button disabled>Disabled Brown</Button><Button border="white" disabled>Disabled White</Button></div></div></PreviewCard>
+<PreviewCard><div className="flex flex-col gap-4 items-center"><div className="flex gap-4 items-center"><Button>Pill Brown</Button><Button borderColor="white">Pill White</Button></div><div className="flex gap-4 items-center"><Button variant="rectangle">Rect Brown</Button><Button variant="rectangle" borderColor="white">Rect White</Button></div><div className="flex gap-4 items-center"><Button disabled>Disabled Brown</Button><Button borderColor="white" disabled>Disabled White</Button></div></div></PreviewCard>
 
 ## Installation
 
@@ -32,8 +32,8 @@ import { Button } from "@/components/ui/button";
 ```tsx
 <Button>Pill (default)</Button>
 <Button variant="rectangle">Rectangle</Button>
-<Button border="white">White border</Button>
-<Button variant="rectangle" border="white">Rectangle white</Button>
+<Button borderColor="white">White border</Button>
+<Button variant="rectangle" borderColor="white">Rectangle white</Button>
 ```
 
 ## Props
@@ -41,6 +41,6 @@ import { Button } from "@/components/ui/button";
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `variant` | `"pill" \| "rectangle"` | `"pill"` | Button shape variant. |
-| `border` | `"brown" \| "white"` | `"brown"` | Border color style. |
+| `borderColor` | `"brown" \| "white"` | `"brown"` | Border color style. |
 | `asChild` | `boolean` | `false` | Render as child element via Radix Slot. |
 | `disabled` | `boolean` | `false` | Disables the button. |
