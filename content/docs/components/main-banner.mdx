@@ -31,21 +31,21 @@ import { Button } from "@/registry/dofus1/ui/button";
     <MainBannerCircle />
     <MainBannerHeart hp={75} />
     <MainBannerButtons>
-      <MainBannerIconButton icon="/icons/banner/stats.svg" />
-      <MainBannerIconButton icon="/icons/banner/spells.svg" />
-      <MainBannerIconButton icon="/icons/banner/inventory.svg" />
-      <MainBannerIconButton icon="/icons/banner/quests.svg" />
-      <MainBannerIconButton icon="/icons/banner/map.svg" />
-      <MainBannerIconButton icon="/icons/banner/friends.svg" />
-      <MainBannerIconButton icon="/icons/banner/guild.svg" />
-      <MainBannerIconButton icon="/icons/banner/pvp.svg" />
+      <MainBannerIconButton icon="stats" />
+      <MainBannerIconButton icon="spells" />
+      <MainBannerIconButton icon="inventory" />
+      <MainBannerIconButton icon="quests" />
+      <MainBannerIconButton icon="map" />
+      <MainBannerIconButton icon="friends" />
+      <MainBannerIconButton icon="guild" />
+      <MainBannerIconButton icon="pvp" />
     </MainBannerButtons>
     <MainBannerMorePanel>
-      <MainBannerIconButton icon="/icons/banner/mount.svg" />
-      <MainBannerIconButton icon="/icons/banner/job.svg" />
-      <MainBannerIconButton icon="/icons/banner/achievement.svg" />
-      <MainBannerIconButton icon="/icons/banner/event.svg" />
-      <MainBannerIconButton icon="/icons/banner/title.svg" />
+      <MainBannerIconButton icon="mount" />
+      <MainBannerIconButton icon="job" />
+      <MainBannerIconButton icon="achievement" />
+      <MainBannerIconButton icon="event" />
+      <MainBannerIconButton icon="title" />
     </MainBannerMorePanel>
     <MainBannerRightPanel />
     <MainBannerSpells />
@@ -65,14 +65,14 @@ import { Button } from "@/registry/dofus1/ui/button";
     <MainBannerCircle />
     <MainBannerHeart hp={40} />
     <MainBannerButtons>
-      <MainBannerIconButton icon="/icons/banner/stats.svg" />
-      <MainBannerIconButton icon="/icons/banner/spells.svg" />
-      <MainBannerIconButton icon="/icons/banner/inventory.svg" />
-      <MainBannerIconButton icon="/icons/banner/quests.svg" />
-      <MainBannerIconButton icon="/icons/banner/map.svg" />
-      <MainBannerIconButton icon="/icons/banner/friends.svg" />
-      <MainBannerIconButton icon="/icons/banner/guild.svg" />
-      <MainBannerIconButton icon="/icons/banner/pvp.svg" />
+      <MainBannerIconButton icon="stats" />
+      <MainBannerIconButton icon="spells" />
+      <MainBannerIconButton icon="inventory" />
+      <MainBannerIconButton icon="quests" />
+      <MainBannerIconButton icon="map" />
+      <MainBannerIconButton icon="friends" />
+      <MainBannerIconButton icon="guild" />
+      <MainBannerIconButton icon="pvp" />
     </MainBannerButtons>
     <MainBannerFightControls>
       <Button variant="rectangle">Give Up</Button>
@@ -114,16 +114,24 @@ import {
   <MainBannerCircle>{/* Minimap content */}</MainBannerCircle>
   <MainBannerHeart hp={100} />
   <MainBannerButtons>
-    <MainBannerIconButton icon="/icons/banner/stats.svg" />
-    <MainBannerIconButton icon="/icons/banner/spells.svg" />
-    {/* ... 8 buttons total */}
+    <MainBannerIconButton icon="stats" />
+    <MainBannerIconButton icon="spells" />
+    <MainBannerIconButton icon="inventory" />
+    <MainBannerIconButton icon="quests" />
+    <MainBannerIconButton icon="map" />
+    <MainBannerIconButton icon="friends" />
+    <MainBannerIconButton icon="guild" />
+    <MainBannerIconButton icon="pvp" />
   </MainBannerButtons>
   <MainBannerMorePanel>
-    <MainBannerIconButton icon="/icons/banner/mount.svg" />
-    {/* ... extra buttons */}
+    <MainBannerIconButton icon="mount" />
+    <MainBannerIconButton icon="job" />
+    <MainBannerIconButton icon="achievement" />
+    <MainBannerIconButton icon="event" />
+    <MainBannerIconButton icon="title" />
   </MainBannerMorePanel>
-  <MainBannerRightPanel>{/* Info panel */}</MainBannerRightPanel>
-  <MainBannerSpells>{/* Spell bar */}</MainBannerSpells>
+  <MainBannerRightPanel />
+  <MainBannerSpells />
 </MainBanner>
 ```
 
@@ -137,7 +145,7 @@ import {
 | `MainBannerCircle` | Center circle with minimap rings. Expands on hover in normal mode. |
 | `MainBannerHeart` | Heart health display with HP bar. Accepts `hp` prop (0-100). |
 | `MainBannerButtons` | Action button row. Positions children at exact game coordinates. |
-| `MainBannerIconButton` | Round orange button with SVG icon. Accepts `icon` path. |
+| `MainBannerIconButton` | Round orange button. Accepts `icon` name: `"stats"`, `"spells"`, `"inventory"`, `"quests"`, `"map"`, `"friends"`, `"guild"`, `"pvp"`, `"mount"`, `"job"`, `"achievement"`, `"event"`, `"title"`. |
 | `MainBannerMorePanel` | Toggleable vertical panel above the last button slot (+/- toggle). |
 | `MainBannerFightControls` | Fight-only controls. Only renders in fight mode. |
 | `MainBannerRightPanel` | Notched tan panel on the right side. |
