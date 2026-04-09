@@ -15,6 +15,32 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A pill-shaped button styled like the Dofus 1.29 UI with pressed state.",
+      "dependencies": ["@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "registry/dofus1/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "main-banner",
+      "type": "registry:ui",
+      "title": "MainBanner",
+      "description": "The bottom HUD bar from Dofus 1.29 with chat, minimap circle, action buttons, and fight mode.",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/dofus1/ui/main-banner.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

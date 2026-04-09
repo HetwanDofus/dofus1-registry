@@ -1,0 +1,144 @@
+---
+title: MainBanner
+description: The bottom HUD bar from Dofus 1.29 with chat, minimap circle, action buttons, and fight mode.
+---
+
+import {
+  MainBanner,
+  MainBannerChat,
+  MainBannerChatInput,
+  MainBannerCircle,
+  MainBannerButtons,
+  MainBannerRightPanel,
+  MainBannerSpells,
+  MainBannerHeart,
+  MainBannerFightControls,
+  MainBannerIconButton,
+  MainBannerMorePanel,
+} from "@/registry/dofus1/ui/main-banner";
+import { Button } from "@/registry/dofus1/ui/button";
+
+## Preview — Normal Mode
+
+<PreviewCard className="min-h-[40rem] !items-end">
+  <MainBanner mode="normal">
+    <MainBannerChat>
+      <div className="p-1 text-[10px] font-[Verdana,sans-serif] text-[#514a3c] opacity-60">
+        [General] Welcome to Dofus!
+      </div>
+    </MainBannerChat>
+    <MainBannerChatInput placeholder="Enter a message..." />
+    <MainBannerCircle />
+    <MainBannerHeart hp={75} />
+    <MainBannerButtons>
+      <MainBannerIconButton icon="/icons/banner/stats.svg" />
+      <MainBannerIconButton icon="/icons/banner/spells.svg" />
+      <MainBannerIconButton icon="/icons/banner/inventory.svg" />
+      <MainBannerIconButton icon="/icons/banner/quests.svg" />
+      <MainBannerIconButton icon="/icons/banner/map.svg" />
+      <MainBannerIconButton icon="/icons/banner/friends.svg" />
+      <MainBannerIconButton icon="/icons/banner/guild.svg" />
+      <MainBannerIconButton icon="/icons/banner/pvp.svg" />
+    </MainBannerButtons>
+    <MainBannerMorePanel>
+      <MainBannerIconButton icon="/icons/banner/mount.svg" />
+      <MainBannerIconButton icon="/icons/banner/job.svg" />
+      <MainBannerIconButton icon="/icons/banner/achievement.svg" />
+      <MainBannerIconButton icon="/icons/banner/event.svg" />
+      <MainBannerIconButton icon="/icons/banner/title.svg" />
+    </MainBannerMorePanel>
+    <MainBannerRightPanel />
+    <MainBannerSpells />
+  </MainBanner>
+</PreviewCard>
+
+## Preview — Fight Mode
+
+<PreviewCard className="min-h-[40rem] !items-end">
+  <MainBanner mode="fight">
+    <MainBannerChat>
+      <div className="p-1 text-[10px] font-[Verdana,sans-serif] text-[#514a3c] opacity-60">
+        [Fight] Your turn!
+      </div>
+    </MainBannerChat>
+    <MainBannerChatInput placeholder="Enter a message..." />
+    <MainBannerCircle />
+    <MainBannerHeart hp={40} />
+    <MainBannerButtons>
+      <MainBannerIconButton icon="/icons/banner/stats.svg" />
+      <MainBannerIconButton icon="/icons/banner/spells.svg" />
+      <MainBannerIconButton icon="/icons/banner/inventory.svg" />
+      <MainBannerIconButton icon="/icons/banner/quests.svg" />
+      <MainBannerIconButton icon="/icons/banner/map.svg" />
+      <MainBannerIconButton icon="/icons/banner/friends.svg" />
+      <MainBannerIconButton icon="/icons/banner/guild.svg" />
+      <MainBannerIconButton icon="/icons/banner/pvp.svg" />
+    </MainBannerButtons>
+    <MainBannerFightControls>
+      <Button variant="rectangle">Give Up</Button>
+      <Button variant="rectangle">Next Turn</Button>
+    </MainBannerFightControls>
+    <MainBannerRightPanel />
+    <MainBannerSpells />
+  </MainBanner>
+</PreviewCard>
+
+## Installation
+
+```bash
+npx shadcn@latest add main-banner
+```
+
+## Usage
+
+```tsx
+import {
+  MainBanner,
+  MainBannerChat,
+  MainBannerChatInput,
+  MainBannerCircle,
+  MainBannerButtons,
+  MainBannerIconButton,
+  MainBannerMorePanel,
+  MainBannerRightPanel,
+  MainBannerSpells,
+  MainBannerHeart,
+  MainBannerFightControls,
+} from "@/components/ui/main-banner";
+```
+
+```tsx
+<MainBanner mode="normal">
+  <MainBannerChat>{/* Chat messages */}</MainBannerChat>
+  <MainBannerChatInput placeholder="Enter a message..." />
+  <MainBannerCircle>{/* Minimap content */}</MainBannerCircle>
+  <MainBannerHeart hp={100} />
+  <MainBannerButtons>
+    <MainBannerIconButton icon="/icons/banner/stats.svg" />
+    <MainBannerIconButton icon="/icons/banner/spells.svg" />
+    {/* ... 8 buttons total */}
+  </MainBannerButtons>
+  <MainBannerMorePanel>
+    <MainBannerIconButton icon="/icons/banner/mount.svg" />
+    {/* ... extra buttons */}
+  </MainBannerMorePanel>
+  <MainBannerRightPanel>{/* Info panel */}</MainBannerRightPanel>
+  <MainBannerSpells>{/* Spell bar */}</MainBannerSpells>
+</MainBanner>
+```
+
+## Components
+
+| Component | Description |
+|-----------|-------------|
+| `MainBanner` | Root container. Accepts `mode="normal"` or `mode="fight"`. |
+| `MainBannerChat` | Left chat message area. |
+| `MainBannerChatInput` | Text input bar at bottom of chat area. |
+| `MainBannerCircle` | Center circle with minimap rings. Expands on hover in normal mode. |
+| `MainBannerHeart` | Heart health display with HP bar. Accepts `hp` prop (0-100). |
+| `MainBannerButtons` | Action button row. Positions children at exact game coordinates. |
+| `MainBannerIconButton` | Round orange button with SVG icon. Accepts `icon` path. |
+| `MainBannerMorePanel` | Toggleable vertical panel above the last button slot (+/- toggle). |
+| `MainBannerFightControls` | Fight-only controls. Only renders in fight mode. |
+| `MainBannerRightPanel` | Notched tan panel on the right side. |
+| `MainBannerSpells` | Spell bar area. |

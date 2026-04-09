@@ -1,7 +1,8 @@
 import type { MDXComponents } from "mdx/types";
 
 import { CodeBlock } from "@/components/code-block";
-import { Card, CardContent } from "@/components/ui/card";
+import { PreviewCard } from "@/components/preview-card";
+import { Card } from "@/components/ui/card";
 import {
   Table,
   TableBody,
@@ -10,16 +11,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-function PreviewCard({ children }: { children: React.ReactNode }) {
-  return (
-    <Card className="mb-6">
-      <CardContent className="flex items-center justify-center min-h-48 p-10">
-        {children}
-      </CardContent>
-    </Card>
-  );
-}
 
 export const mdxComponents: MDXComponents = {
   PreviewCard,
