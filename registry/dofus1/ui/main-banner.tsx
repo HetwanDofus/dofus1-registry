@@ -382,21 +382,23 @@ function MainBannerButtons({
 /*  InlineSvg                                                          */
 /* ------------------------------------------------------------------ */
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const svgCache = new Map<string, string>();
 
 function InlineSvg({ src, className }: { src: string; className?: string }) {
   const uid = useId();
-  const [svg, setSvg] = useState(() => svgCache.get(src));
+  const resolvedSrc = src.startsWith("/") ? `${basePath}${src}` : src;
+  const [svg, setSvg] = useState(() => svgCache.get(resolvedSrc));
 
   useEffect(() => {
-    if (svgCache.has(src)) {
-      setSvg(svgCache.get(src));
+    if (svgCache.has(resolvedSrc)) {
+      setSvg(svgCache.get(resolvedSrc));
       return;
     }
-    fetch(src)
+    fetch(resolvedSrc)
       .then((r) => r.text())
       .then((text) => {
-        svgCache.set(src, text);
+        svgCache.set(resolvedSrc, text);
         setSvg(text);
       });
   }, [src]);
