@@ -15,6 +15,104 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A pill-shaped button styled like the Dofus 1.29 UI with pressed state.",
+      "dependencies": ["@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "registry/dofus1/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "main-banner",
+      "type": "registry:ui",
+      "title": "MainBanner",
+      "description": "The bottom HUD bar from Dofus 1.29 with chat, minimap circle, action buttons, and fight mode.",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/dofus1/ui/main-banner.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/achievement.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/button-bg.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/event.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/friends.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/guild.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/inventory.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/job.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/less.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/map.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/more.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/mount.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/percent-sign.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/pvp.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/quests.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/spells.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/stats.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/title.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/turn-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }

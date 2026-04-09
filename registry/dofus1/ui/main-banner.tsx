@@ -723,7 +723,10 @@ function MainBannerFightControls({
   children?: ReactNode;
 }) {
   const mode = useBannerMode();
-  if (mode !== "fight") return null;
+
+  if (mode !== "fight") {
+    return null;
+  }
 
   return (
     <div
