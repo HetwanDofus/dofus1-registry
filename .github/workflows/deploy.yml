@@ -27,6 +27,8 @@ jobs:
       - run: bun run registry:build
 
       - run: bun run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /dofus1-registry
 
       - uses: actions/upload-pages-artifact@v3
         with:
