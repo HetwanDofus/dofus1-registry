@@ -176,7 +176,7 @@ function MainBannerCircle({
       role="none"
       className={cn(
         "absolute z-10",
-        "left-[calc(360px*var(--resolution-factor))]",
+        "left-[calc(365.5px*var(--resolution-factor))]",
         "top-[calc(6px*var(--resolution-factor))]",
         "w-[calc(119px*var(--resolution-factor))]",
         "h-[calc(119px*var(--resolution-factor))]",
@@ -282,10 +282,10 @@ function MainBannerHeart({
     <div
       className={cn(
         "absolute z-10",
-        "left-[calc(394px*var(--resolution-factor))]",
-        "top-[calc(-4px*var(--resolution-factor))]",
-        "w-[calc(50px*var(--resolution-factor))]",
-        "h-[calc(39px*var(--resolution-factor))]",
+        "left-[calc(402.7px*var(--resolution-factor))]",
+        "top-[calc(-4.5px*var(--resolution-factor))]",
+        "w-[calc(43.6px*var(--resolution-factor))]",
+        "h-[calc(39.1px*var(--resolution-factor))]",
         className,
       )}
     >
@@ -379,8 +379,8 @@ function MainBannerIconButton({
       type="button"
       className={cn(
         "group/btn relative cursor-pointer border-none bg-transparent p-0 overflow-visible",
-        "w-[calc(26px*var(--resolution-factor))]",
-        "h-[calc(26px*var(--resolution-factor))]",
+        "w-[calc(24px*var(--resolution-factor))]",
+        "h-[calc(24px*var(--resolution-factor))]",
         "[--ns-stroke:calc(1/var(--resolution-factor))]",
         className,
       )}
@@ -427,18 +427,20 @@ function MainBannerMorePanel({
         <div
           className={cn(
             "absolute z-20 bottom-full",
-            "left-[calc(712px*var(--resolution-factor))]",
+            "left-[calc(710.5px*var(--resolution-factor))]",
             className,
           )}
         >
           <div
             className={cn(
               "relative bg-main-banner-bg",
-              "border-x-2 border-t-2 border-main-banner-circle-border border-b-0",
+              "border-x-[3px] border-t-[3px] border-main-banner-circle-border border-b-0",
               "rounded-t-[calc(10px*var(--resolution-factor))]",
               "flex flex-col items-center",
-              "gap-[calc(2px*var(--resolution-factor))]",
-              "p-[calc(5px*var(--resolution-factor))]",
+              "gap-[calc(4px*var(--resolution-factor))]",
+              "px-[calc(5px*var(--resolution-factor))]",
+              "pt-[calc(12px*var(--resolution-factor))]",
+              "pb-[calc(2px*var(--resolution-factor))]",
             )}
           >
             {childArray.map((child, i) => (
