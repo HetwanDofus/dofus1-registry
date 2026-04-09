@@ -3,9 +3,7 @@
   "name": "action-popout-menu",
   "title": "ActionPopoutMenu",
   "description": "A context menu triggered by right-click or programmatically, styled like the Dofus Zaap menu.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "registry/dofus1/ui/action-popout-menu.tsx",

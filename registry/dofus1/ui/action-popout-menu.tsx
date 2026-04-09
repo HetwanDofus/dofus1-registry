@@ -5,10 +5,7 @@ import { ContextMenu } from "@base-ui/react/context-menu";
 
 import { cn } from "@/lib/utils";
 
-function ActionPopoutMenu({
-  children,
-  ...props
-}: ContextMenu.Root.Props) {
+function ActionPopoutMenu({ children, ...props }: ContextMenu.Root.Props) {
   return <ContextMenu.Root {...props}>{children}</ContextMenu.Root>;
 }
 
@@ -105,11 +102,7 @@ function ActionPopoutMenuItem({
   );
 }
 
-function ActionPopoutMenuSeparator({
-  className,
-}: {
-  className?: string;
-}) {
+function ActionPopoutMenuSeparator({ className }: { className?: string }) {
   return (
     <ContextMenu.Separator
       className={cn("h-px bg-action-popout-menu-bg", className)}

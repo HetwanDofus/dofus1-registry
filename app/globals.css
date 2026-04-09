@@ -1,15 +1,7 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "bit-mini-6";
-  src: url("/fonts/bitMini6.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 @theme inline {
-  --font-bitmini6: "bit-mini-6", monospace;
+  --font-bitmini6: var(--font-bitmini6-face), monospace;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -28,23 +20,13 @@
   --color-ring: var(--ring);
 
   /* ActionPopoutMenu */
-  --color-action-popout-menu-border: var(
-    --action-popout-menu-border
-  );
+  --color-action-popout-menu-border: var(--action-popout-menu-border);
   --color-action-popout-menu-bg: var(--action-popout-menu-bg);
   --color-action-popout-menu-fg: var(--action-popout-menu-fg);
-  --color-action-popout-menu-static-bg: var(
-    --action-popout-menu-static-bg
-  );
-  --color-action-popout-menu-static-text: var(
-    --action-popout-menu-static-text
-  );
-  --color-action-popout-menu-item-text: var(
-    --action-popout-menu-item-text
-  );
-  --color-action-popout-menu-item-hover: var(
-    --action-popout-menu-item-hover
-  );
+  --color-action-popout-menu-static-bg: var(--action-popout-menu-static-bg);
+  --color-action-popout-menu-static-text: var(--action-popout-menu-static-text);
+  --color-action-popout-menu-item-text: var(--action-popout-menu-item-text);
+  --color-action-popout-menu-item-hover: var(--action-popout-menu-item-hover);
 }
 
 :root {
