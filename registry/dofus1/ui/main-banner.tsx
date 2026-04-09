@@ -8,6 +8,7 @@ import {
   useId,
   useState,
 } from "react";
+import { match } from "ts-pattern";
 
 import AchievementIcon from "./icons/banner/achievement";
 import { ButtonBgDown, ButtonBgUp } from "./icons/banner/button-bg";
@@ -20,15 +21,13 @@ import LessIcon from "./icons/banner/less";
 import MapIcon from "./icons/banner/map";
 import MoreIcon from "./icons/banner/more";
 import MountIcon from "./icons/banner/mount";
+import { PercentSign } from "./icons/banner/percent-sign";
 import PvpIcon from "./icons/banner/pvp";
 import QuestsIcon from "./icons/banner/quests";
 import SpellsIcon from "./icons/banner/spells";
 import StatsIcon from "./icons/banner/stats";
 import TitleIcon from "./icons/banner/title";
-import {
-  TurnButtonDown,
-  TurnButtonUp,
-} from "./icons/banner/turn-button";
+import { TurnButtonDown, TurnButtonUp } from "./icons/banner/turn-button";
 
 const BANNER_ICONS = {
   stats: StatsIcon,
@@ -51,6 +50,7 @@ const BANNER_ICONS = {
 type BannerIconName = keyof typeof BANNER_ICONS;
 
 import { Tabs } from "@base-ui/react/tabs";
+
 import { cn } from "@/lib/utils";
 
 type BannerMode = "normal" | "fight";
@@ -261,8 +261,22 @@ function MainBannerCircle({
         role="presentation"
         imageRendering="optimizeQuality"
       >
-        <line x1="0.5" y1="56.5" x2="112.5" y2="56.5" stroke="white" strokeWidth="1" />
-        <line x1="56.5" y1="0.5" x2="56.5" y2="112.5" stroke="white" strokeWidth="1" />
+        <line
+          x1="0.5"
+          y1="56.5"
+          x2="112.5"
+          y2="56.5"
+          stroke="white"
+          strokeWidth="1"
+        />
+        <line
+          x1="56.5"
+          y1="0.5"
+          x2="56.5"
+          y2="112.5"
+          stroke="white"
+          strokeWidth="1"
+        />
       </svg>
     </div>
   );
@@ -271,28 +285,44 @@ function MainBannerCircle({
 const HEART_PATH =
   "M6.7 -17.9L13 -18.15Q20 -15.5 20.7 -9.2Q21.4 -3.3 18 1.95Q14.7 7.1 10.05 11.4Q5.7 15.35 0.5 18.55L-0.5 18.55Q-5.75 15.35 -10.1 11.4Q-14.75 7.1 -18.05 2Q-21.4 -3.25 -20.7 -9.2Q-20 -15.45 -13 -18.1L-6.75 -17.8L-0.45 -15.25L0.55 -15.25L6.7 -17.9";
 
+type HeartDisplayState = "value" | "double" | "percent";
+
+const HEART_DISPLAY_CYCLE: HeartDisplayState[] = ["value", "double", "percent"];
+
 function MainBannerHeart({
   className,
   hp = 100,
+  max = 100,
   children,
 }: {
   className?: string;
   hp?: number;
+  max?: number;
   children?: ReactNode;
 }) {
   const clipId = useId();
-  const fillY = 19.55 - (hp / 100) * 39.1;
+  const [displayState, setDisplayState] = useState<HeartDisplayState>("value");
+  const fillY = 19.55 - (hp / max) * 39.1;
+
+  function toggleDisplay() {
+    setDisplayState((prev) => {
+      const idx = HEART_DISPLAY_CYCLE.indexOf(prev);
+      return HEART_DISPLAY_CYCLE[(idx + 1) % HEART_DISPLAY_CYCLE.length];
+    });
+  }
 
   return (
-    <div
+    <button
+      type="button"
       className={cn(
-        "absolute z-10",
+        "absolute z-10 cursor-pointer border-none bg-transparent p-0",
         "left-[calc(402.7px*var(--resolution-factor))]",
         "top-[calc(-4.5px*var(--resolution-factor))]",
         "w-[calc(43.6px*var(--resolution-factor))]",
         "h-[calc(39.1px*var(--resolution-factor))]",
         className,
       )}
+      onClick={toggleDisplay}
     >
       <svg
         className="w-full h-full"
@@ -323,15 +353,79 @@ function MainBannerHeart({
           strokeLinejoin="round"
         />
         <circle cx="4.8" cy="-8.8" r="3" fill="white" fillOpacity="0.3" />
-        <ellipse cx="-11.7" cy="-5.9" rx="5.7" ry="5.8" fill="white" fillOpacity="0.3" />
+        <ellipse
+          cx="-11.7"
+          cy="-5.9"
+          rx="5.7"
+          ry="5.8"
+          fill="white"
+          fillOpacity="0.3"
+        />
         <path
           d="M9.6 -16.4L7.6 -16.75Q10.5 -17.55 12.8 -16.8Q19.3 -14.35 19.95 -8.5Q20.55 -3 17.45 1.9Q14.35 6.65 10.05 10.65Q6 14.35 1.15 17.3L0.25 17.3Q-4.65 14.35 -8.7 10.65Q-13 6.65 -16.05 1.9Q-17.25 0.05 -17.9 -1.85L-16.6 0.6Q-13.85 4.9 -9.9 8.5Q-6.2 11.9 -1.8 14.6L-0.95 14.6Q3.45 11.9 7.15 8.5Q11.05 4.9 13.85 0.55Q16.7 -3.85 16.15 -8.85Q15.5 -14.2 9.6 -16.4"
           fill="#660000"
           fillOpacity="0.32"
         />
+        {match(displayState)
+          .with("value", () => (
+            <text
+              x="0"
+              y="-2.775"
+              textAnchor="middle"
+              dominantBaseline="central"
+              fontFamily="Impact"
+              fontSize="18"
+              fill="#000033"
+            >
+              {hp}
+            </text>
+          ))
+          .with("double", () => (
+            <>
+              <text
+                x="0"
+                y="-6.675"
+                textAnchor="middle"
+                dominantBaseline="central"
+                fontFamily="Impact"
+                fontSize="16"
+                fill="#000033"
+              >
+                {hp}
+              </text>
+              <text
+                x="0"
+                y="6.575"
+                textAnchor="middle"
+                dominantBaseline="central"
+                fontFamily="Impact"
+                fontSize="13"
+                fill="#000066"
+              >
+                {max}
+              </text>
+            </>
+          ))
+          .with("percent", () => (
+            <>
+              <text
+                x="0"
+                y="-7"
+                textAnchor="middle"
+                dominantBaseline="central"
+                fontFamily="Impact"
+                fontSize="16"
+                fill="#000033"
+              >
+                {Math.ceil((hp / max) * 100)}
+              </text>
+              <PercentSign transform="translate(0, -1)" />
+            </>
+          ))
+          .exhaustive()}
       </svg>
       {children}
-    </div>
+    </button>
   );
 }
 
@@ -391,9 +485,9 @@ function MainBannerIconButton({
       )}
       {...props}
     >
-      <ButtonBgUp className="absolute inset-0 w-full h-full group-active/btn:hidden" />
-      <ButtonBgDown className="absolute inset-0 w-full h-full hidden group-active/btn:block" />
-      <Icon className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none overflow-visible scale-(--resolution-factor)" />
+      <ButtonBgUp className="absolute inset-0 w-full h-full pointer-events-none group-active/btn:hidden" />
+      <ButtonBgDown className="absolute inset-0 w-full h-full pointer-events-none hidden group-active/btn:block" />
+      <Icon className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none overflow-visible scale-(--resolution-factor) group-active/btn:translate-x-[calc(-50%+0.5px*var(--resolution-factor))] group-active/btn:translate-y-[calc(-50%+0.5px*var(--resolution-factor))]" />
     </button>
   );
 }
