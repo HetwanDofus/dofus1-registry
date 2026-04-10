@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useId } from 'react';
+import { useId } from "react";
 
 export default function EventIcon({ className }: { className?: string }) {
   const id0 = useId();
@@ -14,10 +14,17 @@ export default function EventIcon({ className }: { className?: string }) {
       width="21.4px"
       height="23.5px"
       className={className}
+      shapeRendering="geometricPrecision"
+      imageRendering="optimizeQuality"
     >
       <title>Event</title>
       <g transform="matrix(1, 0, 0, 1, 0.5, 0.5)">
-        <use xlinkHref={`#${id0}`} width="21.4" height="23.5" transform="matrix(1, 0, 0, 1, -0.5, -0.5)" />
+        <use
+          xlinkHref={`#${id0}`}
+          width="21.4"
+          height="23.5"
+          transform="matrix(1, 0, 0, 1, -0.5, -0.5)"
+        />
       </g>
       <defs>
         <g transform="matrix(1, 0, 0, 1, 0.5, 0.5)" id={id0}>

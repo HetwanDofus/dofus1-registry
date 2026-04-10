@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useId } from 'react';
+import { useId } from "react";
 
 export default function QuestsIcon({ className }: { className?: string }) {
   const id0 = useId();
@@ -16,11 +16,23 @@ export default function QuestsIcon({ className }: { className?: string }) {
       width="32px"
       height="32.8px"
       className={className}
+      shapeRendering="geometricPrecision"
+      imageRendering="optimizeQuality"
     >
       <title>Quests</title>
       <g transform="matrix(1, 0, 0, 1, 16, 16.8)">
-        <use xlinkHref={`#${id0}`} width="19.7" height="25.45" transform="matrix(1, 0, 0, 1, -6.85, -16.8)" />
-        <use xlinkHref={`#${id1}`} width="100" height="100" transform="matrix(0.32, 0, 0, 0.32, -16, -16)" />
+        <use
+          xlinkHref={`#${id0}`}
+          width="19.7"
+          height="25.45"
+          transform="matrix(1, 0, 0, 1, -6.85, -16.8)"
+        />
+        <use
+          xlinkHref={`#${id1}`}
+          width="100"
+          height="100"
+          transform="matrix(0.32, 0, 0, 0.32, -16, -16)"
+        />
       </g>
       <defs>
         <g transform="matrix(1, 0, 0, 1, 6.85, 16.8)" id={id0}>
@@ -70,7 +82,12 @@ export default function QuestsIcon({ className }: { className?: string }) {
           />
         </g>
         <g transform="matrix(1, 0, 0, 1, 0, 0)" id={id1}>
-          <use xlinkHref={`#${id2}`} width="100" height="8" transform="matrix(1, 0, 0, 12.5, 0, 0)" />
+          <use
+            xlinkHref={`#${id2}`}
+            width="100"
+            height="8"
+            transform="matrix(1, 0, 0, 12.5, 0, 0)"
+          />
         </g>
         <g transform="matrix(1, 0, 0, 1, -2, -2)" id={id2}>
           <path

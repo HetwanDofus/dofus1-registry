@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useId } from 'react';
+import { useId } from "react";
 
 export default function PvpIcon({ className }: { className?: string }) {
   const id0 = useId();
@@ -18,16 +18,38 @@ export default function PvpIcon({ className }: { className?: string }) {
       width="32px"
       height="33px"
       className={className}
+      shapeRendering="geometricPrecision"
+      imageRendering="optimizeQuality"
     >
       <title>Pvp</title>
       <g transform="matrix(1, 0, 0, 1, 16, 17)">
-        <use xlinkHref={`#${id0}`} width="100" height="100" transform="matrix(0.32, 0, 0, 0.32, -16, -16)" />
-        <use xlinkHref={`#${id2}`} width="31.75" height="50.95" transform="matrix(0.5206, 0.13, -0.13, 0.5206, -6.2, -17)" />
-        <use xlinkHref={`#${id3}`} width="31.75" height="50.95" transform="matrix(-0.5098, 0.1371, 0.1392, 0.5173, 5.55, -17)" />
+        <use
+          xlinkHref={`#${id0}`}
+          width="100"
+          height="100"
+          transform="matrix(0.32, 0, 0, 0.32, -16, -16)"
+        />
+        <use
+          xlinkHref={`#${id2}`}
+          width="31.75"
+          height="50.95"
+          transform="matrix(0.5206, 0.13, -0.13, 0.5206, -6.2, -17)"
+        />
+        <use
+          xlinkHref={`#${id3}`}
+          width="31.75"
+          height="50.95"
+          transform="matrix(-0.5098, 0.1371, 0.1392, 0.5173, 5.55, -17)"
+        />
       </g>
       <defs>
         <g transform="matrix(1, 0, 0, 1, 0, 0)" id={id0}>
-          <use xlinkHref={`#${id1}`} width="100" height="8" transform="matrix(1, 0, 0, 12.5, 0, 0)" />
+          <use
+            xlinkHref={`#${id1}`}
+            width="100"
+            height="8"
+            transform="matrix(1, 0, 0, 12.5, 0, 0)"
+          />
         </g>
         <g transform="matrix(1, 0, 0, 1, -2, -2)" id={id1}>
           <path
@@ -39,10 +61,20 @@ export default function PvpIcon({ className }: { className?: string }) {
           />
         </g>
         <g transform="matrix(1, 0, 0, 1, 13.65, 29.2)" id={id2}>
-          <use xlinkHref={`#${id4}`} width="31.75" height="50.95" transform="matrix(1, 0, 0, 1, -13.65, -29.2)" />
+          <use
+            xlinkHref={`#${id4}`}
+            width="31.75"
+            height="50.95"
+            transform="matrix(1, 0, 0, 1, -13.65, -29.2)"
+          />
         </g>
         <g transform="matrix(1, 0, 0, 1, 13.65, 29.2)" id={id3}>
-          <use xlinkHref={`#${id4}`} width="31.75" height="50.95" transform="matrix(1, 0, 0, 1, -13.65, -29.2)" />
+          <use
+            xlinkHref={`#${id4}`}
+            width="31.75"
+            height="50.95"
+            transform="matrix(1, 0, 0, 1, -13.65, -29.2)"
+          />
         </g>
         <g transform="matrix(1, 0, 0, 1, 13.65, 29.2)" id={id4}>
           <path

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useId } from 'react';
+import { useId } from "react";
 
 export default function JobIcon({ className }: { className?: string }) {
   const id0 = useId();
@@ -14,10 +14,17 @@ export default function JobIcon({ className }: { className?: string }) {
       width="28.5px"
       height="19.15px"
       className={className}
+      shapeRendering="geometricPrecision"
+      imageRendering="optimizeQuality"
     >
       <title>Job</title>
       <g transform="matrix(1, 0, 0, 1, 0.5, 0.5)">
-        <use xlinkHref={`#${id0}`} width="28.5" height="19.15" transform="matrix(1, 0, 0, 1, -0.5, -0.5)" />
+        <use
+          xlinkHref={`#${id0}`}
+          width="28.5"
+          height="19.15"
+          transform="matrix(1, 0, 0, 1, -0.5, -0.5)"
+        />
       </g>
       <defs>
         <g transform="matrix(1, 0, 0, 1, 0.5, 0.5)" id={id0}>

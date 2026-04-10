@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useId } from 'react';
+import { useId } from "react";
 
 export function TurnButtonUp({ className }: { className?: string }) {
   const gradId = useId();
@@ -12,6 +12,8 @@ export function TurnButtonUp({ className }: { className?: string }) {
       width="42px"
       height="23.95px"
       className={className}
+      shapeRendering="geometricPrecision"
+      imageRendering="optimizeQuality"
     >
       <title>End turn</title>
       <g transform="matrix(1, 0, 0, 1, 0.5, 0.45)">
@@ -78,6 +80,8 @@ export function TurnButtonDown({ className }: { className?: string }) {
       width="42px"
       height="23.95px"
       className={className}
+      shapeRendering="geometricPrecision"
+      imageRendering="optimizeQuality"
     >
       <title>End turn pressed</title>
       <g transform="matrix(1, 0, 0, 1, 0.5, 0.45)">

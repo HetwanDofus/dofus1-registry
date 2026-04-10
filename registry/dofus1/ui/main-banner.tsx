@@ -83,24 +83,23 @@ function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
       <div
         className={cn(
           bannerVariants({ mode }),
-          "w-[calc(750px*var(--resolution-factor))]",
-          "h-[calc(125px*var(--resolution-factor))]",
+          "w-[calc(742px*var(--resolution-factor))]",
+          "h-[calc(124.985px*var(--resolution-factor))]",
           className,
         )}
       >
         <div
           className={cn(
             "absolute bg-main-banner-bg",
-            "left-[calc(7.5px*var(--resolution-factor))]",
             "top-0",
             "w-[calc(742px*var(--resolution-factor))]",
-            "h-[calc(125px*var(--resolution-factor))]",
+            "h-[calc(124.985px*var(--resolution-factor))]",
           )}
         />
         <div
           className={cn(
             "absolute bg-main-banner-header-bg",
-            "left-[calc(422.5px*var(--resolution-factor))]",
+            "left-[calc(415px*var(--resolution-factor))]",
             "top-0",
             "w-[calc(327px*var(--resolution-factor))]",
             "h-[calc(40px*var(--resolution-factor))]",
@@ -109,7 +108,7 @@ function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
         <div
           className={cn(
             "absolute bg-main-banner-chat-input-bg",
-            "left-[calc(7.5px*var(--resolution-factor))]",
+            "left-0",
             "top-[calc(104px*var(--resolution-factor))]",
             "w-[calc(415px*var(--resolution-factor))]",
             "h-[calc(21px*var(--resolution-factor))]",
@@ -132,7 +131,7 @@ function MainBannerChat({
     <div
       className={cn(
         "absolute overflow-hidden",
-        "left-[calc(8px*var(--resolution-factor))]",
+        "left-[calc(0.5px*var(--resolution-factor))]",
         "top-[calc(1px*var(--resolution-factor))]",
         "w-[calc(412px*var(--resolution-factor))]",
         "h-[calc(103px*var(--resolution-factor))]",
@@ -153,7 +152,7 @@ function MainBannerChatInput({
       type="text"
       className={cn(
         "absolute bg-transparent text-main-banner-circle-bg font-[Verdana,sans-serif] outline-none",
-        "left-[calc(28.5px*var(--resolution-factor))]",
+        "left-[calc(21px*var(--resolution-factor))]",
         "top-[calc(107px*var(--resolution-factor))]",
         "w-[calc(385px*var(--resolution-factor))]",
         "h-[calc(16px*var(--resolution-factor))]",
@@ -181,7 +180,7 @@ function MainBannerCircle({
       role="none"
       className={cn(
         "absolute z-10",
-        "left-[calc(365.5px*var(--resolution-factor))]",
+        "left-[calc(358px*var(--resolution-factor))]",
         "top-[calc(6px*var(--resolution-factor))]",
         "w-[calc(119px*var(--resolution-factor))]",
         "h-[calc(119px*var(--resolution-factor))]",
@@ -307,6 +306,7 @@ function MainBannerHeart({
   function toggleDisplay() {
     setDisplayState((prev) => {
       const idx = HEART_DISPLAY_CYCLE.indexOf(prev);
+
       return HEART_DISPLAY_CYCLE[(idx + 1) % HEART_DISPLAY_CYCLE.length];
     });
   }
@@ -316,7 +316,7 @@ function MainBannerHeart({
       type="button"
       className={cn(
         "absolute z-10 cursor-pointer border-none bg-transparent p-0",
-        "left-[calc(402.7px*var(--resolution-factor))]",
+        "left-[calc(395.2px*var(--resolution-factor))]",
         "top-[calc(-4.5px*var(--resolution-factor))]",
         "w-[calc(43.6px*var(--resolution-factor))]",
         "h-[calc(39.1px*var(--resolution-factor))]",
@@ -329,6 +329,7 @@ function MainBannerHeart({
         viewBox="-21.8 -19.55 43.6 39.1"
         fill="none"
         role="presentation"
+        shapeRendering="geometricPrecision"
         imageRendering="optimizeQuality"
       >
         <path d={HEART_PATH} fill="#ffff66" />
@@ -410,7 +411,7 @@ function MainBannerHeart({
             <>
               <text
                 x="0"
-                y="-7"
+                y="-6.675"
                 textAnchor="middle"
                 dominantBaseline="central"
                 fontFamily="Impact"
@@ -430,7 +431,7 @@ function MainBannerHeart({
 }
 
 const BUTTON_POSITIONS = [
-  483.5, 512.75, 542, 571.25, 600.5, 629.75, 659, 688.25, 717.5,
+  476, 505.25, 534.5, 563.75, 593, 622.25, 651.5, 680.75, 710,
 ];
 
 function MainBannerButtons({
@@ -453,7 +454,7 @@ function MainBannerButtons({
           key={BUTTON_POSITIONS[i] ?? i}
           className="absolute"
           style={{
-            left: `calc(${BUTTON_POSITIONS[i] ?? 483.5 + i * 29.25}px * var(--resolution-factor))`,
+            left: `calc(${BUTTON_POSITIONS[i] ?? 476 + i * 29.25}px * var(--resolution-factor))`,
             top: "calc(8px * var(--resolution-factor))",
           }}
         >
@@ -513,7 +514,7 @@ function MainBannerMorePanel({
       <div
         className={cn(
           "absolute",
-          "left-[calc(717.5px*var(--resolution-factor))]",
+          "left-[calc(710px*var(--resolution-factor))]",
           "top-[calc(8px*var(--resolution-factor))]",
         )}
       >
@@ -526,7 +527,7 @@ function MainBannerMorePanel({
         <div
           className={cn(
             "absolute z-20 bottom-full",
-            "left-[calc(710.5px*var(--resolution-factor))]",
+            "left-[calc(703px*var(--resolution-factor))]",
             className,
           )}
         >
@@ -563,7 +564,7 @@ function MainBannerRightPanel({
     <div
       className={cn(
         "absolute bg-main-banner-panel-bg overflow-hidden",
-        "left-[calc(471.6px*var(--resolution-factor))]",
+        "left-[calc(464.1px*var(--resolution-factor))]",
         "top-[calc(49px*var(--resolution-factor))]",
         "w-[calc(252px*var(--resolution-factor))]",
         "h-[calc(64px*var(--resolution-factor))]",
@@ -585,7 +586,7 @@ function MainBannerTurnButton({
       type="button"
       className={cn(
         "group/turn absolute z-10 cursor-pointer border-none bg-transparent p-0 overflow-visible",
-        "left-[calc(470.5px*var(--resolution-factor))]",
+        "left-[calc(463px*var(--resolution-factor))]",
         "top-[calc(89.2px*var(--resolution-factor))]",
         "w-[calc(41px*var(--resolution-factor))]",
         "h-[calc(24px*var(--resolution-factor))]",
@@ -663,7 +664,7 @@ function MainBannerGrid({
       defaultValue={defaultValue ?? tabs?.[0]?.value}
       className={cn(
         "absolute flex items-start",
-        "left-[calc(487px*var(--resolution-factor))]",
+        "left-[calc(479.5px*var(--resolution-factor))]",
         "top-[calc(41px*var(--resolution-factor))]",
         "w-[calc(245px*var(--resolution-factor))]",
         "h-[calc(88px*var(--resolution-factor))]",
@@ -713,7 +714,7 @@ function MainBannerFightControls({
     <div
       className={cn(
         "absolute flex items-center",
-        "left-[calc(403px*var(--resolution-factor))]",
+        "left-[calc(395.5px*var(--resolution-factor))]",
         "top-[calc(88px*var(--resolution-factor))]",
         "gap-[calc(4px*var(--resolution-factor))]",
         "h-[calc(24px*var(--resolution-factor))]",
