@@ -634,11 +634,11 @@ function MainBannerGridTab({
         "cursor-pointer p-0 m-0 border-none",
         "w-[calc(15px*var(--resolution-factor))]",
         "h-[calc(31.5px*var(--resolution-factor))]",
-        "text-[calc(9px*var(--resolution-factor))]",
+        "text-[calc(10px*var(--resolution-factor))]",
         "font-[Verdana,sans-serif]",
         "[writing-mode:vertical-rl] [text-orientation:mixed]",
         "bg-[#514A3C] text-white font-normal",
-        "aria-selected:w-[calc(16px*var(--resolution-factor))] aria-selected:bg-[linear-gradient(to_right,#B4AC8D_70%,#9a9378)] aria-selected:text-[#514A3C] aria-selected:font-bold",
+        "aria-selected:w-[calc(16px*var(--resolution-factor))] aria-selected:pr-[calc(1px*var(--resolution-factor))] aria-selected:bg-[linear-gradient(to_right,#B4AC8D_70%,#9a9378)] aria-selected:text-[#514A3C] aria-selected:font-bold",
         className,
       )}
       {...props}
