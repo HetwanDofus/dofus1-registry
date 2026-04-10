@@ -632,13 +632,13 @@ function MainBannerGridTab({
     <Tabs.Tab
       className={cn(
         "cursor-pointer p-0 m-0 border-none",
-        "w-[calc(16px*var(--resolution-factor))]",
+        "w-[calc(15px*var(--resolution-factor))]",
         "h-[calc(31.5px*var(--resolution-factor))]",
         "text-[calc(9px*var(--resolution-factor))]",
         "font-[Verdana,sans-serif]",
         "[writing-mode:vertical-rl] [text-orientation:mixed]",
-        "bg-[linear-gradient(to_right,#514A3C_70%,#3d3729)] text-white font-normal",
-        "data-active:bg-[linear-gradient(to_right,#B4AC8D_70%,#9a9378)] data-active:text-[#514A3C] data-active:font-bold",
+        "bg-[#514A3C] text-white font-normal",
+        "aria-selected:w-[calc(16px*var(--resolution-factor))] aria-selected:bg-[linear-gradient(to_right,#B4AC8D_70%,#9a9378)] aria-selected:text-[#514A3C] aria-selected:font-bold",
         className,
       )}
       {...props}
