@@ -576,29 +576,6 @@ function MainBannerRightPanel({
   );
 }
 
-function MainBannerSpells({
-  className,
-  children,
-}: {
-  className?: string;
-  children?: ReactNode;
-}) {
-  return (
-    <div
-      className={cn(
-        "absolute",
-        "left-[calc(487px*var(--resolution-factor))]",
-        "top-[calc(41px*var(--resolution-factor))]",
-        "w-[calc(245px*var(--resolution-factor))]",
-        "h-[calc(88px*var(--resolution-factor))]",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
-}
-
 function MainBannerTurnButton({
   className,
   ...props
@@ -685,7 +662,11 @@ function MainBannerGrid({
     <Tabs.Root
       defaultValue={defaultValue ?? tabs?.[0]?.value}
       className={cn(
-        "flex items-start h-full",
+        "absolute flex items-start",
+        "left-[calc(487px*var(--resolution-factor))]",
+        "top-[calc(41px*var(--resolution-factor))]",
+        "w-[calc(245px*var(--resolution-factor))]",
+        "h-[calc(88px*var(--resolution-factor))]",
         "pl-[calc(38.6px*var(--resolution-factor))]",
         "pt-[calc(8px*var(--resolution-factor))]",
         "gap-[calc(3px*var(--resolution-factor))]",
@@ -758,6 +739,5 @@ export {
   MainBannerGrid,
   MainBannerGridSlot,
   MainBannerGridTab,
-  MainBannerSpells,
   MainBannerTurnButton,
 };

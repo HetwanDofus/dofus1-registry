@@ -10,7 +10,6 @@ import {
   MainBannerCircle,
   MainBannerButtons,
   MainBannerRightPanel,
-  MainBannerSpells,
   MainBannerHeart,
   MainBannerFightControls,
   MainBannerIconButton,
@@ -51,13 +50,11 @@ import { Button } from "@/registry/dofus1/ui/button";
       <MainBannerIconButton icon="title" />
     </MainBannerMorePanel>
     <MainBannerRightPanel />
-    <MainBannerSpells>
-      <MainBannerGrid tabs={[{ value: "spells", label: "Spells" }, { value: "items", label: "Itm." }]}>
-        {Array.from({ length: 14 }, (_, i) => (
-          <MainBannerGridSlot key={i} />
-        ))}
-      </MainBannerGrid>
-    </MainBannerSpells>
+    <MainBannerGrid tabs={[{ value: "spells", label: "Spells" }, { value: "items", label: "Itm." }]}>
+      {Array.from({ length: 14 }, (_, i) => (
+        <MainBannerGridSlot key={i} />
+      ))}
+    </MainBannerGrid>
   </MainBanner>
 </PreviewCard>
 
@@ -95,13 +92,11 @@ import { Button } from "@/registry/dofus1/ui/button";
       <Button variant="rectangle">Give Up</Button>
     </MainBannerFightControls>
     <MainBannerRightPanel />
-    <MainBannerSpells>
-      <MainBannerGrid tabs={[{ value: "spells", label: "Spells" }, { value: "items", label: "Itm." }]}>
-        {Array.from({ length: 14 }, (_, i) => (
-          <MainBannerGridSlot key={i} />
-        ))}
-      </MainBannerGrid>
-    </MainBannerSpells>
+    <MainBannerGrid tabs={[{ value: "spells", label: "Spells" }, { value: "items", label: "Itm." }]}>
+      {Array.from({ length: 14 }, (_, i) => (
+        <MainBannerGridSlot key={i} />
+      ))}
+    </MainBannerGrid>
   </MainBanner>
 </PreviewCard>
 
@@ -123,9 +118,10 @@ import {
   MainBannerIconButton,
   MainBannerMorePanel,
   MainBannerRightPanel,
-  MainBannerSpells,
   MainBannerHeart,
   MainBannerFightControls,
+  MainBannerGrid,
+  MainBannerGridSlot,
 } from "@/components/ui/main-banner";
 ```
 
@@ -153,7 +149,11 @@ import {
     <MainBannerIconButton icon="title" />
   </MainBannerMorePanel>
   <MainBannerRightPanel />
-  <MainBannerSpells />
+  <MainBannerGrid tabs={[{ value: "spells", label: "Spells" }, { value: "items", label: "Itm." }]}>
+    {Array.from({ length: 14 }, (_, i) => (
+      <MainBannerGridSlot key={i} />
+    ))}
+  </MainBannerGrid>
 </MainBanner>
 ```
 
@@ -171,4 +171,5 @@ import {
 | `MainBannerMorePanel` | Toggleable vertical panel above the last button slot (+/- toggle). |
 | `MainBannerFightControls` | Fight-only controls. Only renders in fight mode. |
 | `MainBannerRightPanel` | Notched tan panel on the right side. |
-| `MainBannerSpells` | Spell bar area. |
+| `MainBannerGrid` | Spell/item grid with optional vertical tabs. Positioned over the right panel. |
+| `MainBannerGridSlot` | Individual grid slot inside `MainBannerGrid`. |
