@@ -30,14 +30,32 @@
       ]
     },
     {
+      "name": "scrollbar",
+      "type": "registry:ui",
+      "title": "Scrollbar",
+      "description": "A Dofus 1.29-styled scrollbar with vertical and horizontal axis variants.",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/dofus1/ui/scrollbar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "main-banner",
       "type": "registry:ui",
       "title": "MainBanner",
       "description": "The bottom HUD bar from Dofus 1.29 with chat, minimap circle, action buttons, and fight mode.",
       "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["./scrollbar.json"],
       "files": [
         {
           "path": "registry/dofus1/ui/main-banner.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/dofus1/ui/icons/banner/chat-header-buttons.tsx",
           "type": "registry:ui"
         },
         {
