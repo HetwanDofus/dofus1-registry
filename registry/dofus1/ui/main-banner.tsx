@@ -850,7 +850,7 @@ function MainBannerIconButton({
       type="button"
       className={cn(
         "group/btn relative cursor-pointer border-none bg-transparent p-0 overflow-visible",
-        "w-[calc(24px*var(--resolution-factor))]",
+        "w-[calc(25px*var(--resolution-factor))]",
         "h-[calc(24px*var(--resolution-factor))]",
         "[--ns-stroke:calc(1/var(--resolution-factor))]",
         className,
