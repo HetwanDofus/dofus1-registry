@@ -517,18 +517,25 @@ function MainBannerChatInput({
   );
 }
 
+type MainBannerCircleChildren =
+  | ReactNode
+  | ((state: { isExpanded: boolean }) => ReactNode);
+
 function MainBannerCircle({
   className,
   children,
 }: {
   className?: string;
-  children?: ReactNode;
+  children?: MainBannerCircleChildren;
 }) {
   const mode = useBannerMode();
   const expanded = useCircleExpanded();
   const setExpanded = useSetCircleExpanded();
   const isExpanded = mode === "normal" && expanded;
   const maskId = useId();
+  const hasChildren = children !== undefined && children !== null;
+  const renderedChildren =
+    typeof children === "function" ? children({ isExpanded }) : children;
 
   return (
     <div
@@ -564,51 +571,40 @@ function MainBannerCircle({
       />
       <div
         className={cn(
-          "absolute rounded-full bg-main-banner-circle-border",
+          "absolute rounded-full box-border border-main-banner-circle-border",
           "left-0 top-0",
           "w-[calc(119px*var(--resolution-factor))]",
-          "h-[calc(119px*var(--resolution-factor))]"
+          "h-[calc(119px*var(--resolution-factor))]",
+          "border-[calc(4px*var(--resolution-factor))]"
         )}
       />
       <div
         className={cn(
-          "absolute rounded-full bg-main-banner-circle-bg",
+          "absolute rounded-full box-border border-main-banner-circle-bg",
           "left-[calc(4px*var(--resolution-factor))]",
           "top-[calc(4px*var(--resolution-factor))]",
           "w-[calc(111px*var(--resolution-factor))]",
-          "h-[calc(111px*var(--resolution-factor))]"
+          "h-[calc(111px*var(--resolution-factor))]",
+          "border-[calc(15.5px*var(--resolution-factor))]"
         )}
       />
       <div
         className={cn(
-          "absolute rounded-full bg-main-banner-circle-border",
+          "absolute rounded-full box-border border-main-banner-circle-border",
           "left-[calc(19.5px*var(--resolution-factor))]",
           "top-[calc(19.5px*var(--resolution-factor))]",
           "w-[calc(80px*var(--resolution-factor))]",
-          "h-[calc(80px*var(--resolution-factor))]"
+          "h-[calc(80px*var(--resolution-factor))]",
+          "border-[calc(3px*var(--resolution-factor))]"
         )}
       />
-      <div
-        className={cn(
-          "absolute rounded-full overflow-hidden transition-transform origin-center",
-          !children && "bg-main-banner-circle-viewport",
-          "left-[calc(22.5px*var(--resolution-factor))]",
-          "top-[calc(22.5px*var(--resolution-factor))]",
-          "w-[calc(74px*var(--resolution-factor))]",
-          "h-[calc(74px*var(--resolution-factor))]",
-          isExpanded && "scale-150"
-        )}
-      >
-        {children}
-      </div>
       <svg
         className={cn(
-          "absolute pointer-events-none transition-opacity",
+          "absolute pointer-events-none",
           "left-[calc(3px*var(--resolution-factor))]",
           "top-[calc(3px*var(--resolution-factor))]",
           "w-[calc(113px*var(--resolution-factor))]",
-          "h-[calc(113px*var(--resolution-factor))]",
-          isExpanded && "opacity-0"
+          "h-[calc(113px*var(--resolution-factor))]"
         )}
         viewBox="0 0 113 113"
         fill="none"
@@ -621,11 +617,7 @@ function MainBannerCircle({
             <circle cx="56.5" cy="56.5" r="40" fill="black" />
           </mask>
         </defs>
-        <g
-          mask={`url(#${maskId})`}
-          stroke="white"
-          strokeWidth="1"
-        >
+        <g mask={`url(#${maskId})`} stroke="white" strokeWidth="1">
           <line x1="0.5" y1="56.5" x2="112.5" y2="56.5" />
           <line x1="56.5" y1="0.5" x2="56.5" y2="112.5" />
           <line x1="16.9" y1="16.9" x2="96.1" y2="96.1" />
@@ -633,7 +625,24 @@ function MainBannerCircle({
         </g>
       </svg>
       <div
-        className="absolute inset-0 pointer-events-auto [clip-path:circle(50%)]"
+        className={cn(
+          "absolute rounded-full overflow-hidden transition-[clip-path]",
+          !hasChildren && "bg-main-banner-circle-viewport",
+          "left-0 top-0",
+          "w-[calc(119px*var(--resolution-factor))]",
+          "h-[calc(119px*var(--resolution-factor))]",
+          isExpanded
+            ? "[clip-path:circle(calc(59.5px*var(--resolution-factor)))]"
+            : "[clip-path:circle(calc(37px*var(--resolution-factor)))]"
+        )}
+      >
+        {renderedChildren}
+      </div>
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-auto [clip-path:circle(50%)] bg-transparent border-none p-0 cursor-default"
         onMouseEnter={() => setExpanded(true)}
         onMouseLeave={() => setExpanded(false)}
       />
