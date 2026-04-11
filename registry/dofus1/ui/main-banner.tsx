@@ -63,12 +63,28 @@ import { Tabs } from "@base-ui/react/tabs";
 import { cn } from "@/lib/utils";
 
 type BannerMode = "normal" | "fight";
-const MainBannerContext = createContext<{ mode: BannerMode }>({
+interface MainBannerContextValue {
+  mode: BannerMode;
+  circleExpanded: boolean;
+  setCircleExpanded: (expanded: boolean) => void;
+}
+
+const MainBannerContext = createContext<MainBannerContextValue>({
   mode: "normal",
+  circleExpanded: false,
+  setCircleExpanded: () => {},
 });
 
 function useBannerMode() {
   return useContext(MainBannerContext).mode;
+}
+
+function useCircleExpanded() {
+  return useContext(MainBannerContext).circleExpanded;
+}
+
+function useSetCircleExpanded() {
+  return useContext(MainBannerContext).setCircleExpanded;
 }
 
 const bannerVariants = cva("relative select-none", {
@@ -87,8 +103,16 @@ interface MainBannerProps extends VariantProps<typeof bannerVariants> {
 }
 
 function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
+  const [circleExpanded, setCircleExpanded] = useState(false);
+
   return (
-    <MainBannerContext.Provider value={{ mode: mode ?? "normal" }}>
+    <MainBannerContext.Provider
+      value={{
+        mode: mode ?? "normal",
+        circleExpanded,
+        setCircleExpanded,
+      }}
+    >
       <div
         className={cn(
           bannerVariants({ mode }),
@@ -501,7 +525,8 @@ function MainBannerCircle({
   children?: ReactNode;
 }) {
   const mode = useBannerMode();
-  const [expanded, setExpanded] = useState(false);
+  const expanded = useCircleExpanded();
+  const setExpanded = useSetCircleExpanded();
   const isExpanded = mode === "normal" && expanded;
 
   return (
@@ -566,23 +591,24 @@ function MainBannerCircle({
       />
       <div
         className={cn(
-          "absolute rounded-full bg-main-banner-circle-viewport overflow-hidden transition-transform",
+          "absolute rounded-full bg-main-banner-circle-viewport overflow-hidden transition-transform origin-center",
           "left-[calc(22.5px*var(--resolution-factor))]",
           "top-[calc(22.5px*var(--resolution-factor))]",
           "w-[calc(74px*var(--resolution-factor))]",
           "h-[calc(74px*var(--resolution-factor))]",
-          isExpanded && "scale-125"
+          isExpanded && "scale-150"
         )}
       >
         {children}
       </div>
       <svg
         className={cn(
-          "absolute pointer-events-none",
+          "absolute pointer-events-none transition-opacity",
           "left-[calc(3px*var(--resolution-factor))]",
           "top-[calc(3px*var(--resolution-factor))]",
           "w-[calc(113px*var(--resolution-factor))]",
-          "h-[calc(113px*var(--resolution-factor))]"
+          "h-[calc(113px*var(--resolution-factor))]",
+          isExpanded && "opacity-0"
         )}
         viewBox="0 0 113 113"
         fill="none"
@@ -602,6 +628,22 @@ function MainBannerCircle({
           y1="0.5"
           x2="56.5"
           y2="112.5"
+          stroke="white"
+          strokeWidth="1"
+        />
+        <line
+          x1="16.9"
+          y1="16.9"
+          x2="96.1"
+          y2="96.1"
+          stroke="white"
+          strokeWidth="1"
+        />
+        <line
+          x1="16.9"
+          y1="96.1"
+          x2="96.1"
+          y2="16.9"
           stroke="white"
           strokeWidth="1"
         />
@@ -629,6 +671,9 @@ function MainBannerHeart({
   children?: ReactNode;
 }) {
   const clipId = useId();
+  const mode = useBannerMode();
+  const circleExpanded = useCircleExpanded();
+  const shiftUp = mode === "normal" && circleExpanded;
   const [displayState, setDisplayState] = useState<HeartDisplayState>("value");
   const fillY = 19.55 - (hp / max) * 39.1;
 
@@ -645,10 +690,12 @@ function MainBannerHeart({
       type="button"
       className={cn(
         "absolute z-10 cursor-pointer border-none bg-transparent p-0",
+        "transition-transform duration-150 ease-out",
         "left-[calc(395.2px*var(--resolution-factor))]",
         "top-[calc(-4.5px*var(--resolution-factor))]",
         "w-[calc(43.6px*var(--resolution-factor))]",
         "h-[calc(39.1px*var(--resolution-factor))]",
+        shiftUp && "-translate-y-[calc(20px*var(--resolution-factor))]",
         className
       )}
       onClick={toggleDisplay}
