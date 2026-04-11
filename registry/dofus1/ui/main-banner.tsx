@@ -528,20 +528,19 @@ function MainBannerCircle({
   const expanded = useCircleExpanded();
   const setExpanded = useSetCircleExpanded();
   const isExpanded = mode === "normal" && expanded;
+  const maskId = useId();
 
   return (
     <div
       role="none"
       className={cn(
-        "absolute z-10",
+        "absolute z-10 pointer-events-none",
         "left-[calc(358px*var(--resolution-factor))]",
         "top-[calc(6px*var(--resolution-factor))]",
         "w-[calc(119px*var(--resolution-factor))]",
         "h-[calc(119px*var(--resolution-factor))]",
         className
       )}
-      onMouseEnter={() => setExpanded(true)}
-      onMouseLeave={() => setExpanded(false)}
     >
       <div
         className={cn(
@@ -591,7 +590,8 @@ function MainBannerCircle({
       />
       <div
         className={cn(
-          "absolute rounded-full bg-main-banner-circle-viewport overflow-hidden transition-transform origin-center",
+          "absolute rounded-full overflow-hidden transition-transform origin-center",
+          !children && "bg-main-banner-circle-viewport",
           "left-[calc(22.5px*var(--resolution-factor))]",
           "top-[calc(22.5px*var(--resolution-factor))]",
           "w-[calc(74px*var(--resolution-factor))]",
@@ -615,39 +615,28 @@ function MainBannerCircle({
         role="presentation"
         imageRendering="optimizeQuality"
       >
-        <line
-          x1="0.5"
-          y1="56.5"
-          x2="112.5"
-          y2="56.5"
+        <defs>
+          <mask id={maskId}>
+            <circle cx="56.5" cy="56.5" r="55.5" fill="white" />
+            <circle cx="56.5" cy="56.5" r="40" fill="black" />
+          </mask>
+        </defs>
+        <g
+          mask={`url(#${maskId})`}
           stroke="white"
           strokeWidth="1"
-        />
-        <line
-          x1="56.5"
-          y1="0.5"
-          x2="56.5"
-          y2="112.5"
-          stroke="white"
-          strokeWidth="1"
-        />
-        <line
-          x1="16.9"
-          y1="16.9"
-          x2="96.1"
-          y2="96.1"
-          stroke="white"
-          strokeWidth="1"
-        />
-        <line
-          x1="16.9"
-          y1="96.1"
-          x2="96.1"
-          y2="16.9"
-          stroke="white"
-          strokeWidth="1"
-        />
+        >
+          <line x1="0.5" y1="56.5" x2="112.5" y2="56.5" />
+          <line x1="56.5" y1="0.5" x2="56.5" y2="112.5" />
+          <line x1="16.9" y1="16.9" x2="96.1" y2="96.1" />
+          <line x1="16.9" y1="96.1" x2="96.1" y2="16.9" />
+        </g>
       </svg>
+      <div
+        className="absolute inset-0 pointer-events-auto [clip-path:circle(50%)]"
+        onMouseEnter={() => setExpanded(true)}
+        onMouseLeave={() => setExpanded(false)}
+      />
     </div>
   );
 }
