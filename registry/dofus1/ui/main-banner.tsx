@@ -118,7 +118,7 @@ function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
           bannerVariants({ mode }),
           "w-[calc(742px*var(--resolution-factor))]",
           "h-[calc(124.985px*var(--resolution-factor))]",
-          className
+          className,
         )}
       >
         <div
@@ -126,7 +126,7 @@ function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
             "absolute bg-main-banner-bg",
             "top-0",
             "w-[calc(742px*var(--resolution-factor))]",
-            "h-[calc(124.985px*var(--resolution-factor))]"
+            "h-[calc(124.985px*var(--resolution-factor))]",
           )}
         />
         <div
@@ -135,7 +135,7 @@ function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
             "left-[calc(415px*var(--resolution-factor))]",
             "top-0",
             "w-[calc(327px*var(--resolution-factor))]",
-            "h-[calc(40px*var(--resolution-factor))]"
+            "h-[calc(40px*var(--resolution-factor))]",
           )}
         />
         <div
@@ -144,7 +144,7 @@ function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
             "left-0",
             "top-[calc(104px*var(--resolution-factor))]",
             "w-[calc(415px*var(--resolution-factor))]",
-            "h-[calc(21px*var(--resolution-factor))]"
+            "h-[calc(21px*var(--resolution-factor))]",
           )}
         />
         {children}
@@ -163,7 +163,7 @@ function MainBannerChatScrollBar({ expanded = false }: { expanded?: boolean }) {
         "top-[calc(20px*var(--resolution-factor))]",
         expanded
           ? "h-[calc(430px*var(--resolution-factor))]"
-          : "h-[calc(80px*var(--resolution-factor))]"
+          : "h-[calc(80px*var(--resolution-factor))]",
       )}
     />
   );
@@ -200,7 +200,7 @@ function ChatFilterCheckbox({
       className={cn(
         "relative inline-block cursor-pointer",
         "w-[calc(12px*var(--resolution-factor))]",
-        "h-[calc(12px*var(--resolution-factor))]"
+        "h-[calc(12px*var(--resolution-factor))]",
       )}
     >
       <input
@@ -218,7 +218,7 @@ function ChatFilterCheckbox({
         className={cn(
           "absolute inset-0",
           "border-[calc(1px*var(--resolution-factor))] border-[#d5cfaa]",
-          colorClassName
+          colorClassName,
         )}
       />
       {checked && (
@@ -229,7 +229,7 @@ function ChatFilterCheckbox({
             "left-[calc(2.5px*var(--resolution-factor))]",
             "top-[calc(2.5px*var(--resolution-factor))]",
             "w-[calc(7.1px*var(--resolution-factor))]",
-            "h-[calc(6.95px*var(--resolution-factor))]"
+            "h-[calc(6.95px*var(--resolution-factor))]",
           )}
           fill="#ffffff"
           role="img"
@@ -249,7 +249,7 @@ function MainBannerChatFilters() {
         "absolute flex",
         "left-[calc(237.95px*var(--resolution-factor))]",
         "top-[calc(10px*var(--resolution-factor))]",
-        "gap-[calc(2px*var(--resolution-factor))]"
+        "gap-[calc(2px*var(--resolution-factor))]",
       )}
     >
       {CHAT_FILTERS.map(({ label, colorClassName }) => (
@@ -276,14 +276,14 @@ function MainBannerChatEmotePopup() {
         "left-[calc(19px*var(--resolution-factor))]",
         "top-[calc(-67px*var(--resolution-factor))]",
         "w-[calc(353px*var(--resolution-factor))]",
-        "h-[calc(67px*var(--resolution-factor))]"
+        "h-[calc(67px*var(--resolution-factor))]",
       )}
     >
       <div
         className={cn(
           "absolute left-0 top-0 bg-white/70",
           "w-[calc(353px*var(--resolution-factor))]",
-          "h-[calc(1px*var(--resolution-factor))]"
+          "h-[calc(1px*var(--resolution-factor))]",
         )}
       />
       <div
@@ -291,7 +291,7 @@ function MainBannerChatEmotePopup() {
           "absolute left-0 bg-white/70",
           "top-[calc(1px*var(--resolution-factor))]",
           "w-[calc(1px*var(--resolution-factor))]",
-          "h-[calc(66px*var(--resolution-factor))]"
+          "h-[calc(66px*var(--resolution-factor))]",
         )}
       />
       <div
@@ -300,7 +300,7 @@ function MainBannerChatEmotePopup() {
           "left-[calc(352px*var(--resolution-factor))]",
           "top-[calc(1px*var(--resolution-factor))]",
           "w-[calc(1px*var(--resolution-factor))]",
-          "h-[calc(66px*var(--resolution-factor))]"
+          "h-[calc(66px*var(--resolution-factor))]",
         )}
       />
       <div
@@ -309,7 +309,7 @@ function MainBannerChatEmotePopup() {
           "left-[calc(1px*var(--resolution-factor))]",
           "top-[calc(1px*var(--resolution-factor))]",
           "w-[calc(351px*var(--resolution-factor))]",
-          "h-[calc(66px*var(--resolution-factor))]"
+          "h-[calc(66px*var(--resolution-factor))]",
         )}
       />
       <div
@@ -318,7 +318,7 @@ function MainBannerChatEmotePopup() {
           "left-[calc(4px*var(--resolution-factor))]",
           "top-[calc(4px*var(--resolution-factor))]",
           "w-[calc(100px*var(--resolution-factor))]",
-          "h-[calc(60px*var(--resolution-factor))]"
+          "h-[calc(60px*var(--resolution-factor))]",
         )}
       >
         {Array.from({ length: SMILEY_COUNT }, (_, i) => (
@@ -329,7 +329,7 @@ function MainBannerChatEmotePopup() {
             aria-label={`Smiley ${i + 1}`}
             className={cn(
               "cursor-pointer border-none bg-transparent p-0",
-              "hover:bg-white/40"
+              "hover:bg-white/40",
             )}
           />
         ))}
@@ -340,7 +340,7 @@ function MainBannerChatEmotePopup() {
           "left-[calc(106px*var(--resolution-factor))]",
           "top-[calc(6px*var(--resolution-factor))]",
           "w-[calc(1px*var(--resolution-factor))]",
-          "h-[calc(56px*var(--resolution-factor))]"
+          "h-[calc(56px*var(--resolution-factor))]",
         )}
       />
       <div
@@ -349,7 +349,7 @@ function MainBannerChatEmotePopup() {
           "left-[calc(109px*var(--resolution-factor))]",
           "top-[calc(4px*var(--resolution-factor))]",
           "w-[calc(240px*var(--resolution-factor))]",
-          "h-[calc(60px*var(--resolution-factor))]"
+          "h-[calc(60px*var(--resolution-factor))]",
         )}
       >
         {Array.from({ length: EMOTE_COUNT }, (_, i) => (
@@ -360,7 +360,7 @@ function MainBannerChatEmotePopup() {
             aria-label={`Emote ${i + 1}`}
             className={cn(
               "cursor-pointer border-none bg-transparent p-0",
-              "hover:bg-white/40"
+              "hover:bg-white/40",
             )}
           />
         ))}
@@ -383,7 +383,7 @@ function MainBannerChatHeaderButton({
         "absolute cursor-pointer border-none bg-transparent p-0",
         "top-[calc(0.1px*var(--resolution-factor))]",
         "h-[calc(14px*var(--resolution-factor))]",
-        className
+        className,
       )}
       {...props}
     >
@@ -413,18 +413,15 @@ function MainBannerChat({
               "top-[calc(-349px*var(--resolution-factor))]",
               "h-[calc(453px*var(--resolution-factor))]",
             ]
-          : [
-              "top-[calc(1px*var(--resolution-factor))]",
-              "h-[calc(103px*var(--resolution-factor))]",
-            ],
-        className
+          : "h-[calc(103px*var(--resolution-factor))]",
+        className,
       )}
     >
       <div
         className={cn(
           "absolute left-0 top-0 bottom-0 bg-white",
           "w-[calc(420px*var(--resolution-factor))]",
-          "rounded-tr-[calc(10px*var(--resolution-factor))]"
+          "rounded-tr-[calc(10px*var(--resolution-factor))]",
         )}
       />
       <div
@@ -432,14 +429,14 @@ function MainBannerChat({
           "absolute left-0 bottom-0 bg-[#8c8568]",
           "top-[calc(6px*var(--resolution-factor))]",
           "w-[calc(415px*var(--resolution-factor))]",
-          "rounded-tr-[calc(10px*var(--resolution-factor))]"
+          "rounded-tr-[calc(10px*var(--resolution-factor))]",
         )}
       />
       <div
         className={cn(
           "absolute left-0 right-0 bottom-0 bg-[#d5cfaa]",
           "top-[calc(16px*var(--resolution-factor))]",
-          "rounded-tr-[calc(10px*var(--resolution-factor))]"
+          "rounded-tr-[calc(10px*var(--resolution-factor))]",
         )}
       />
       <MainBannerChatHeaderButton
@@ -487,7 +484,7 @@ function MainBannerChat({
             : "h-[calc(80px*var(--resolution-factor))]",
           "font-[Verdana,sans-serif] text-black",
           "text-[calc(10px*var(--resolution-factor))]",
-          "leading-[calc(12px*var(--resolution-factor))]"
+          "leading-[calc(12px*var(--resolution-factor))]",
         )}
       >
         {children}
@@ -510,7 +507,7 @@ function MainBannerChatInput({
         "w-[calc(385px*var(--resolution-factor))]",
         "h-[calc(16px*var(--resolution-factor))]",
         "text-[calc(10px*var(--resolution-factor))]",
-        className
+        className,
       )}
       {...props}
     />
@@ -546,7 +543,7 @@ function MainBannerCircle({
         "top-[calc(6px*var(--resolution-factor))]",
         "w-[calc(119px*var(--resolution-factor))]",
         "h-[calc(119px*var(--resolution-factor))]",
-        className
+        className,
       )}
     >
       <div
@@ -556,7 +553,7 @@ function MainBannerCircle({
           "top-0",
           "w-[calc(119px*var(--resolution-factor))]",
           "h-[calc(119px*var(--resolution-factor))]",
-          "bg-(--main-banner-circle-shadow)"
+          "bg-(--main-banner-circle-shadow)",
         )}
       />
       <div
@@ -566,7 +563,7 @@ function MainBannerCircle({
           "top-0",
           "w-[calc(119px*var(--resolution-factor))]",
           "h-[calc(119px*var(--resolution-factor))]",
-          "bg-(--main-banner-circle-shadow)"
+          "bg-(--main-banner-circle-shadow)",
         )}
       />
       <div
@@ -575,7 +572,7 @@ function MainBannerCircle({
           "left-0 top-0",
           "w-[calc(119px*var(--resolution-factor))]",
           "h-[calc(119px*var(--resolution-factor))]",
-          "border-[calc(4px*var(--resolution-factor))]"
+          "border-[calc(4px*var(--resolution-factor))]",
         )}
       />
       <div
@@ -585,7 +582,7 @@ function MainBannerCircle({
           "top-[calc(4px*var(--resolution-factor))]",
           "w-[calc(111px*var(--resolution-factor))]",
           "h-[calc(111px*var(--resolution-factor))]",
-          "border-[calc(15.5px*var(--resolution-factor))]"
+          "border-[calc(15.5px*var(--resolution-factor))]",
         )}
       />
       <div
@@ -595,7 +592,7 @@ function MainBannerCircle({
           "top-[calc(19.5px*var(--resolution-factor))]",
           "w-[calc(80px*var(--resolution-factor))]",
           "h-[calc(80px*var(--resolution-factor))]",
-          "border-[calc(3px*var(--resolution-factor))]"
+          "border-[calc(3px*var(--resolution-factor))]",
         )}
       />
       <svg
@@ -604,7 +601,7 @@ function MainBannerCircle({
           "left-[calc(3px*var(--resolution-factor))]",
           "top-[calc(3px*var(--resolution-factor))]",
           "w-[calc(113px*var(--resolution-factor))]",
-          "h-[calc(113px*var(--resolution-factor))]"
+          "h-[calc(113px*var(--resolution-factor))]",
         )}
         viewBox="0 0 113 113"
         fill="none"
@@ -633,7 +630,7 @@ function MainBannerCircle({
           "h-[calc(119px*var(--resolution-factor))]",
           isExpanded
             ? "[clip-path:circle(calc(55.5px*var(--resolution-factor)))]"
-            : "[clip-path:circle(calc(37px*var(--resolution-factor)))]"
+            : "[clip-path:circle(calc(37px*var(--resolution-factor)))]",
         )}
       >
         {renderedChildren}
@@ -694,7 +691,7 @@ function MainBannerHeart({
         "w-[calc(43.6px*var(--resolution-factor))]",
         "h-[calc(39.1px*var(--resolution-factor))]",
         shiftUp && "-translate-y-[calc(20px*var(--resolution-factor))]",
-        className
+        className,
       )}
       onClick={toggleDisplay}
     >
@@ -856,7 +853,7 @@ function MainBannerIconButton({
         "w-[calc(24px*var(--resolution-factor))]",
         "h-[calc(24px*var(--resolution-factor))]",
         "[--ns-stroke:calc(1/var(--resolution-factor))]",
-        className
+        className,
       )}
       {...props}
     >
@@ -889,7 +886,7 @@ function MainBannerMorePanel({
         className={cn(
           "absolute",
           "left-[calc(710px*var(--resolution-factor))]",
-          "top-[calc(8px*var(--resolution-factor))]"
+          "top-[calc(8px*var(--resolution-factor))]",
         )}
       >
         <MainBannerIconButton
@@ -902,7 +899,7 @@ function MainBannerMorePanel({
           className={cn(
             "absolute z-20 bottom-full",
             "left-[calc(703px*var(--resolution-factor))]",
-            className
+            className,
           )}
         >
           <div
@@ -914,7 +911,7 @@ function MainBannerMorePanel({
               "gap-[calc(4px*var(--resolution-factor))]",
               "px-[calc(5px*var(--resolution-factor))]",
               "pt-[calc(12px*var(--resolution-factor))]",
-              "pb-[calc(2px*var(--resolution-factor))]"
+              "pb-[calc(2px*var(--resolution-factor))]",
             )}
           >
             {childArray.map((child, i) => (
@@ -943,7 +940,7 @@ function MainBannerRightPanel({
         "w-[calc(252px*var(--resolution-factor))]",
         "h-[calc(64px*var(--resolution-factor))]",
         "[clip-path:polygon(0%_0.3%,78.3%_0.08%,84.9%_0.08%,100%_0%,100%_100%,21.2%_100%,19.8%_97.7%,19.3%_93.1%,19.2%_54.4%,0%_54.7%)]",
-        className
+        className,
       )}
     >
       {children}
@@ -964,7 +961,7 @@ function MainBannerTurnButton({
         "top-[calc(89.2px*var(--resolution-factor))]",
         "w-[calc(41px*var(--resolution-factor))]",
         "h-[calc(24px*var(--resolution-factor))]",
-        className
+        className,
       )}
       {...props}
     >
@@ -988,7 +985,7 @@ function MainBannerGridSlot({
         "bg-[#beb998] border-none",
         "shadow-[inset_calc(1px*var(--resolution-factor))_calc(1px*var(--resolution-factor))_0_0_#877b63,inset_calc(-1px*var(--resolution-factor))_calc(-1px*var(--resolution-factor))_0_0_#d1ccb6]",
         "hover:shadow-[inset_0_0_0_calc(2px*var(--resolution-factor))_#ff6600]",
-        className
+        className,
       )}
       {...props}
     >
@@ -1013,7 +1010,7 @@ function MainBannerGridTab({
         "[writing-mode:vertical-rl] [text-orientation:mixed]",
         "bg-[#514A3C] text-white font-normal",
         "aria-selected:w-[calc(16px*var(--resolution-factor))] aria-selected:pr-[calc(1px*var(--resolution-factor))] aria-selected:bg-[linear-gradient(to_right,#B4AC8D_70%,#9a9378)] aria-selected:text-[#514A3C] aria-selected:font-bold",
-        className
+        className,
       )}
       {...props}
     >
@@ -1045,7 +1042,7 @@ function MainBannerGrid({
         "pl-[calc(38.6px*var(--resolution-factor))]",
         "pt-[calc(8px*var(--resolution-factor))]",
         "gap-[calc(3px*var(--resolution-factor))]",
-        className
+        className,
       )}
     >
       <div
@@ -1053,7 +1050,7 @@ function MainBannerGrid({
           "grid grid-cols-[repeat(7,auto)]",
           "mt-[calc(5px*var(--resolution-factor))]",
           "gap-x-[calc(3px*var(--resolution-factor))]",
-          "gap-y-[calc(4px*var(--resolution-factor))]"
+          "gap-y-[calc(4px*var(--resolution-factor))]",
         )}
       >
         {children}
@@ -1092,7 +1089,7 @@ function MainBannerFightControls({
         "top-[calc(88px*var(--resolution-factor))]",
         "gap-[calc(4px*var(--resolution-factor))]",
         "h-[calc(24px*var(--resolution-factor))]",
-        className
+        className,
       )}
     >
       {children}
