@@ -850,8 +850,8 @@ function MainBannerIconButton({
       type="button"
       className={cn(
         "group/btn relative cursor-pointer border-none bg-transparent p-0 overflow-visible",
-        "w-[calc(25px*var(--resolution-factor))]",
-        "h-[calc(24px*var(--resolution-factor))]",
+        "w-[calc(26px*var(--resolution-factor))]",
+        "h-[calc(26px*var(--resolution-factor))]",
         "[--ns-stroke:calc(1/var(--resolution-factor))]",
         className,
       )}
@@ -1041,7 +1041,7 @@ function MainBannerGrid({
         "h-[calc(88px*var(--resolution-factor))]",
         "pl-[calc(38.6px*var(--resolution-factor))]",
         "pt-[calc(8px*var(--resolution-factor))]",
-        "gap-[calc(3px*var(--resolution-factor))]",
+        "gap-[calc(4.8px*var(--resolution-factor))]",
         className,
       )}
     >
