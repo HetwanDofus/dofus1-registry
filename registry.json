@@ -8,7 +8,9 @@
       "type": "registry:ui",
       "title": "ActionPopoutMenu",
       "description": "A context menu triggered by right-click or programmatically, styled like the Dofus Zaap menu.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react"
+      ],
       "files": [
         {
           "path": "registry/dofus1/ui/action-popout-menu.tsx",
@@ -21,7 +23,9 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "A pill-shaped button styled like the Dofus 1.29 UI with pressed state.",
-      "dependencies": ["@radix-ui/react-slot"],
+      "dependencies": [
+        "@radix-ui/react-slot"
+      ],
       "files": [
         {
           "path": "registry/dofus1/ui/button.tsx",
@@ -34,7 +38,9 @@
       "type": "registry:ui",
       "title": "Scrollbar",
       "description": "A Dofus 1.29-styled scrollbar with vertical and horizontal axis variants.",
-      "dependencies": ["class-variance-authority"],
+      "dependencies": [
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "registry/dofus1/ui/scrollbar.tsx",
@@ -47,8 +53,12 @@
       "type": "registry:ui",
       "title": "MainBanner",
       "description": "The bottom HUD bar from Dofus 1.29 with chat, minimap circle, action buttons, and fight mode.",
-      "dependencies": ["class-variance-authority"],
-      "registryDependencies": ["./scrollbar.json"],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "@dofus1/scrollbar"
+      ],
       "files": [
         {
           "path": "registry/dofus1/ui/main-banner.tsx",
