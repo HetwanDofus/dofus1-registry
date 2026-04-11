@@ -13,7 +13,7 @@ export function ButtonChatUp({ className }: IconProps) {
     <svg
       viewBox="0 0 17 14"
       className={cn("pointer-events-none", className)}
-      shapeRendering="crispEdges"
+      shapeRendering="geometricPrecision"
       imageRendering="optimizeQuality"
       role="img"
     >
@@ -151,7 +151,7 @@ export function ButtonChatDown({ className }: IconProps) {
     <svg
       viewBox="0 0 17 14"
       className={cn("pointer-events-none", className)}
-      shapeRendering="crispEdges"
+      shapeRendering="geometricPrecision"
       imageRendering="optimizeQuality"
       role="img"
     >
@@ -267,7 +267,7 @@ export function ButtonEmoteUp({ className }: IconProps) {
     <svg
       viewBox="0 0 20 14"
       className={cn("pointer-events-none", className)}
-      shapeRendering="crispEdges"
+      shapeRendering="geometricPrecision"
       imageRendering="optimizeQuality"
       role="img"
     >
@@ -445,7 +445,7 @@ export function ButtonEmoteDown({ className }: IconProps) {
     <svg
       viewBox="0 0 20 14"
       className={cn("pointer-events-none", className)}
-      shapeRendering="crispEdges"
+      shapeRendering="geometricPrecision"
       imageRendering="optimizeQuality"
       role="img"
     >
@@ -627,7 +627,7 @@ export function ButtonSitUp({ className }: IconProps) {
     <svg
       viewBox="0 0 20 14"
       className={cn("pointer-events-none", className)}
-      shapeRendering="crispEdges"
+      shapeRendering="geometricPrecision"
       imageRendering="optimizeQuality"
       role="img"
     >
@@ -845,7 +845,7 @@ export function ButtonSitDown({ className }: IconProps) {
     <svg
       viewBox="0 0 20 14"
       className={cn("pointer-events-none", className)}
-      shapeRendering="crispEdges"
+      shapeRendering="geometricPrecision"
       imageRendering="optimizeQuality"
       role="img"
     >
