@@ -632,7 +632,7 @@ function MainBannerCircle({
           "w-[calc(119px*var(--resolution-factor))]",
           "h-[calc(119px*var(--resolution-factor))]",
           isExpanded
-            ? "[clip-path:circle(calc(59.5px*var(--resolution-factor)))]"
+            ? "[clip-path:circle(calc(55.5px*var(--resolution-factor)))]"
             : "[clip-path:circle(calc(37px*var(--resolution-factor)))]"
         )}
       >
@@ -642,7 +642,7 @@ function MainBannerCircle({
         type="button"
         tabIndex={-1}
         aria-hidden="true"
-        className="absolute inset-0 pointer-events-auto [clip-path:circle(50%)] bg-transparent border-none p-0 cursor-default"
+        className="absolute inset-0 pointer-events-auto [clip-path:circle(calc(37px*var(--resolution-factor)))] bg-transparent border-none p-0 cursor-default"
         onMouseEnter={() => setExpanded(true)}
         onMouseLeave={() => setExpanded(false)}
       />
