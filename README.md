@@ -16,7 +16,10 @@ npx shadcn@latest add https://hetwandofus.github.io/dofus1-registry/r/action-pop
 
 | Component | Description |
 |-----------|-------------|
-| **ActionPopoutMenu** | Context menu triggered by right-click, styled like the Dofus Zaap popup menu. |
+| **ActionPopoutMenu** | A context menu triggered by right-click or programmatically, styled like the Dofus Zaap menu. |
+| **Button** | A pill-shaped button styled like the Dofus 1.29 UI with pressed state. |
+| **Scrollbar** | A Dofus 1.29-styled scrollbar with vertical and horizontal axis variants. |
+| **MainBanner** | The bottom HUD bar from Dofus 1.29 with chat, minimap circle, action buttons, and fight mode. |
 
 ## Resolution Scaling
 
