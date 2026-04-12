@@ -518,12 +518,42 @@ type MainBannerCircleChildren =
   | ReactNode
   | ((state: { isExpanded: boolean }) => ReactNode);
 
+function circleRingArc(percent: number, cx: number, cy: number, r1: number, r2: number) {
+  if (percent <= 0) return "";
+  if (percent >= 1) {
+    return [
+      `M${cx},${cy - r2}`,
+      `A${r2},${r2} 0 1 1 ${cx - 0.001},${cy - r2}`,
+      `L${cx - 0.001},${cy - r1}`,
+      `A${r1},${r1} 0 1 0 ${cx},${cy - r1}`,
+      "Z",
+    ].join(" ");
+  }
+  const a = percent * 2 * Math.PI;
+  const large = percent > 0.5 ? 1 : 0;
+  const ex2 = cx + r2 * Math.sin(a);
+  const ey2 = cy - r2 * Math.cos(a);
+  const ex1 = cx + r1 * Math.sin(a);
+  const ey1 = cy - r1 * Math.cos(a);
+  return [
+    `M${cx},${cy - r2}`,
+    `A${r2},${r2} 0 ${large} 1 ${ex2},${ey2}`,
+    `L${ex1},${ey1}`,
+    `A${r1},${r1} 0 ${large} 0 ${cx},${cy - r1}`,
+    "Z",
+  ].join(" ");
+}
+
 function MainBannerCircle({
   className,
   children,
+  fill = 0,
+  fillColor = "#ff6600",
 }: {
   className?: string;
   children?: MainBannerCircleChildren;
+  fill?: number;
+  fillColor?: string;
 }) {
   const mode = useBannerMode();
   const expanded = useCircleExpanded();
@@ -614,6 +644,13 @@ function MainBannerCircle({
             <circle cx="56.5" cy="56.5" r="40" fill="black" />
           </mask>
         </defs>
+        {fill > 0 && (
+          <path
+            d={circleRingArc(fill, 56.5, 56.5, 39, 56)}
+            fill={fillColor}
+            mask={`url(#${maskId})`}
+          />
+        )}
         <g mask={`url(#${maskId})`} stroke="white" strokeWidth="1">
           <line x1="0.5" y1="56.5" x2="112.5" y2="56.5" />
           <line x1="56.5" y1="0.5" x2="56.5" y2="112.5" />
@@ -623,14 +660,14 @@ function MainBannerCircle({
       </svg>
       <div
         className={cn(
-          "absolute rounded-full overflow-hidden transition-[clip-path]",
+          "absolute rounded-full overflow-hidden",
           !hasChildren && "bg-main-banner-circle-viewport",
           "left-0 top-0",
           "w-[calc(119px*var(--resolution-factor))]",
           "h-[calc(119px*var(--resolution-factor))]",
           isExpanded
-            ? "[clip-path:circle(calc(55.5px*var(--resolution-factor)))]"
-            : "[clip-path:circle(calc(37px*var(--resolution-factor)))]",
+            ? "[clip-path:circle(calc(55.5px*var(--resolution-factor)))] [transition:clip-path_150ms_ease-out]"
+            : "[clip-path:circle(calc(37px*var(--resolution-factor)))] [transition:clip-path_150ms_ease-out_400ms]",
         )}
       >
         {renderedChildren}
@@ -685,12 +722,12 @@ function MainBannerHeart({
       type="button"
       className={cn(
         "absolute z-10 cursor-pointer border-none bg-transparent p-0",
-        "transition-transform duration-150 ease-out",
         "left-[calc(395.2px*var(--resolution-factor))]",
         "top-[calc(-4.5px*var(--resolution-factor))]",
         "w-[calc(43.6px*var(--resolution-factor))]",
         "h-[calc(39.1px*var(--resolution-factor))]",
-        shiftUp && "-translate-y-[calc(20px*var(--resolution-factor))]",
+        "translate-y-0 [transition:translate_300ms_ease-out_400ms]",
+        shiftUp && "-translate-y-[calc(30px*var(--resolution-factor))] [transition:translate_150ms_ease-out]",
         className,
       )}
       onClick={toggleDisplay}
