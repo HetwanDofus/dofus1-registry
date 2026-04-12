@@ -905,7 +905,7 @@ function MainBannerMorePanel({
           <div
             className={cn(
               "relative bg-main-banner-bg",
-              "border-x-[calc(3px*var(--resolution-factor))] border-t-[calc(3px*var(--resolution-factor))] border-main-banner-circle-border border-b-0",
+              "border-x-[calc(2px*var(--resolution-factor))] border-t-[calc(2px*var(--resolution-factor))] border-main-banner-circle-border border-b-0",
               "rounded-t-[calc(10px*var(--resolution-factor))]",
               "flex flex-col items-center",
               "gap-[calc(2px*var(--resolution-factor))]",
