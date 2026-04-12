@@ -117,7 +117,7 @@ function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
         className={cn(
           bannerVariants({ mode }),
           "w-[calc(742px*var(--resolution-factor))]",
-          "h-[calc(124.985px*var(--resolution-factor))]",
+          "h-[calc(123.95px*var(--resolution-factor))]",
           className,
         )}
       >
@@ -126,7 +126,7 @@ function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
             "absolute bg-main-banner-bg",
             "top-0",
             "w-[calc(742px*var(--resolution-factor))]",
-            "h-[calc(124.985px*var(--resolution-factor))]",
+            "h-[calc(123.95px*var(--resolution-factor))]",
           )}
         />
         <div
@@ -144,7 +144,7 @@ function MainBanner({ mode = "normal", className, children }: MainBannerProps) {
             "left-0",
             "top-[calc(104px*var(--resolution-factor))]",
             "w-[calc(415px*var(--resolution-factor))]",
-            "h-[calc(21px*var(--resolution-factor))]",
+            "h-[calc(19.95px*var(--resolution-factor))]",
           )}
         />
         {children}
@@ -898,18 +898,18 @@ function MainBannerMorePanel({
         <div
           className={cn(
             "absolute z-20 bottom-full",
-            "left-[calc(703px*var(--resolution-factor))]",
+            "left-[calc(704px*var(--resolution-factor))]",
             className,
           )}
         >
           <div
             className={cn(
               "relative bg-main-banner-bg",
-              "border-x-[3px] border-t-[3px] border-main-banner-circle-border border-b-0",
+              "border-x-[calc(3px*var(--resolution-factor))] border-t-[calc(3px*var(--resolution-factor))] border-main-banner-circle-border border-b-0",
               "rounded-t-[calc(10px*var(--resolution-factor))]",
               "flex flex-col items-center",
-              "gap-[calc(4px*var(--resolution-factor))]",
-              "px-[calc(5px*var(--resolution-factor))]",
+              "gap-[calc(2px*var(--resolution-factor))]",
+              "px-[calc(3px*var(--resolution-factor))]",
               "pt-[calc(12px*var(--resolution-factor))]",
               "pb-[calc(2px*var(--resolution-factor))]",
             )}
@@ -1004,7 +1004,7 @@ function MainBannerGridTab({
       className={cn(
         "cursor-pointer p-0 m-0 border-none",
         "w-[calc(15px*var(--resolution-factor))]",
-        "h-[calc(31.5px*var(--resolution-factor))]",
+        "h-[calc(32px*var(--resolution-factor))]",
         "text-[calc(10px*var(--resolution-factor))]",
         "font-[Verdana,sans-serif]",
         "[writing-mode:vertical-rl] [text-orientation:mixed]",
@@ -1034,21 +1034,19 @@ function MainBannerGrid({
     <Tabs.Root
       defaultValue={defaultValue ?? tabs?.[0]?.value}
       className={cn(
-        "absolute flex items-start",
-        "left-[calc(479.5px*var(--resolution-factor))]",
+        "absolute",
+        "left-[calc(464.1px*var(--resolution-factor))]",
         "top-[calc(41px*var(--resolution-factor))]",
-        "w-[calc(245px*var(--resolution-factor))]",
+        "w-[calc(252px*var(--resolution-factor))]",
         "h-[calc(88px*var(--resolution-factor))]",
-        "pl-[calc(38.6px*var(--resolution-factor))]",
-        "pt-[calc(8px*var(--resolution-factor))]",
-        "gap-[calc(4.8px*var(--resolution-factor))]",
         className,
       )}
     >
       <div
         className={cn(
-          "grid grid-cols-[repeat(7,auto)]",
-          "mt-[calc(5px*var(--resolution-factor))]",
+          "absolute grid grid-cols-[repeat(7,auto)]",
+          "left-[calc(54px*var(--resolution-factor))]",
+          "top-[calc(13px*var(--resolution-factor))]",
           "gap-x-[calc(3px*var(--resolution-factor))]",
           "gap-y-[calc(4px*var(--resolution-factor))]",
         )}
@@ -1056,7 +1054,13 @@ function MainBannerGrid({
         {children}
       </div>
       {tabs && (
-        <Tabs.List className="flex flex-col gap-[calc(1px*var(--resolution-factor))]">
+        <Tabs.List
+          className={cn(
+            "absolute flex flex-col",
+            "left-full",
+            "top-[calc(8.1px*var(--resolution-factor))]",
+          )}
+        >
           {tabs.map(({ value, label }) => (
             <MainBannerGridTab key={value} value={value}>
               {label}
