@@ -569,6 +569,7 @@ function MainBannerCircle({
       role="none"
       className={cn(
         "absolute z-10 pointer-events-none",
+        "[clip-path:inset(-9999px_-9999px_calc((119px_-_117.95px)*var(--resolution-factor))_-9999px)]",
         "left-[calc(358px*var(--resolution-factor))]",
         "top-[calc(6px*var(--resolution-factor))]",
         "w-[calc(119px*var(--resolution-factor))]",
@@ -887,8 +888,8 @@ function MainBannerIconButton({
       type="button"
       className={cn(
         "group/btn relative cursor-pointer border-none bg-transparent p-0 overflow-visible",
-        "w-[calc(26px*var(--resolution-factor))]",
-        "h-[calc(26px*var(--resolution-factor))]",
+        "w-[calc(24px*var(--resolution-factor))]",
+        "h-[calc(24px*var(--resolution-factor))]",
         "[--ns-stroke:calc(1/var(--resolution-factor))]",
         className,
       )}
