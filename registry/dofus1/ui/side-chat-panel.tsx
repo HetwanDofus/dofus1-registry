@@ -68,6 +68,12 @@ function SideChatPanel({
           // `:root --resolution-factor`. The shared `<Scrollbar>` sizes
           // its 12 px geometry via `calc(12px * var(--resolution-factor))`.
           "[--resolution-factor:1.5]",
+          // Game-facing divider — matches the `InfoLog`'s bottom separator
+          // visually. Lives inside the panel via `box-sizing: border-box`
+          // so the panel's overall width stays unchanged.
+          side === "right"
+            ? "border-l-4 border-l-side-chat-separator-bg"
+            : "border-r-4 border-r-side-chat-separator-bg",
           className
         )}
         {...props}
@@ -108,7 +114,13 @@ function SideChatPanelFilterGroup({
 }: React.ComponentProps<"div">) {
   return (
     <div
-      className={cn("flex flex-row items-center flex-1 gap-1", className)}
+      className={cn(
+        // `flex-wrap` lets filters break onto a second row when the header
+        // is narrower than the filter list — the filters row (parent)
+        // then grows in height instead of overflowing horizontally.
+        "flex flex-row flex-wrap items-center flex-1 gap-1",
+        className,
+      )}
       {...props}
     >
       {children}
