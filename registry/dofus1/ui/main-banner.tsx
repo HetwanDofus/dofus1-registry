@@ -324,7 +324,6 @@ function MainBannerChatEmotePopup() {
         {Array.from({ length: SMILEY_COUNT }, (_, i) => (
           <button
             type="button"
-            // biome-ignore lint/suspicious/noArrayIndexKey: static list
             key={`smiley-${i}`}
             aria-label={`Smiley ${i + 1}`}
             className={cn(
@@ -355,7 +354,6 @@ function MainBannerChatEmotePopup() {
         {Array.from({ length: EMOTE_COUNT }, (_, i) => (
           <button
             type="button"
-            // biome-ignore lint/suspicious/noArrayIndexKey: static list
             key={`emote-${i}`}
             aria-label={`Emote ${i + 1}`}
             className={cn(
@@ -518,8 +516,17 @@ type MainBannerCircleChildren =
   | ReactNode
   | ((state: { isExpanded: boolean }) => ReactNode);
 
-function circleRingArc(percent: number, cx: number, cy: number, r1: number, r2: number) {
-  if (percent <= 0) return "";
+function circleRingArc(
+  percent: number,
+  cx: number,
+  cy: number,
+  r1: number,
+  r2: number,
+) {
+  if (percent <= 0) {
+    return "";
+  }
+
   if (percent >= 1) {
     return [
       `M${cx},${cy - r2}`,
@@ -569,7 +576,7 @@ function MainBannerCircle({
       role="none"
       className={cn(
         "absolute z-10 pointer-events-none",
-        "[clip-path:inset(-9999px_-9999px_calc((119px_-_117.95px)*var(--resolution-factor))_-9999px)]",
+        "[clip-path:inset(-9999px_-9999px_calc((119px-117.95px)*var(--resolution-factor))_-9999px)]",
         "left-[calc(358px*var(--resolution-factor))]",
         "top-[calc(6px*var(--resolution-factor))]",
         "w-[calc(119px*var(--resolution-factor))]",
@@ -728,7 +735,8 @@ function MainBannerHeart({
         "w-[calc(43.6px*var(--resolution-factor))]",
         "h-[calc(39.1px*var(--resolution-factor))]",
         "translate-y-0 [transition:translate_300ms_ease-out_400ms]",
-        shiftUp && "-translate-y-[calc(30px*var(--resolution-factor))] [transition:translate_150ms_ease-out]",
+        shiftUp &&
+          "-translate-y-[calc(30px*var(--resolution-factor))] [transition:translate_150ms_ease-out]",
         className,
       )}
       onClick={toggleDisplay}

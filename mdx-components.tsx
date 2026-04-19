@@ -20,7 +20,7 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
-  p: (props) => <p className="text-muted-foreground mb-4" {...props} />,
+  p: (props) => <p {...props} />,
   pre: (props) => <CodeBlock {...props} />,
   code: (props) => <code className="text-foreground text-xs" {...props} />,
   table: (props) => (

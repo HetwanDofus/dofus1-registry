@@ -42,7 +42,7 @@ function ActionPopoutMenuContent({
             "text-[calc(8px*var(--resolution-factor))]",
             "shadow-[0_0_0_calc(1px*var(--resolution-factor))_var(--action-popout-menu-bg),0_0_0_calc(2px*var(--resolution-factor))_var(--action-popout-menu-border)]",
             "bg-action-popout-menu-fg",
-            className
+            className,
           )}
         >
           {children}
@@ -65,7 +65,7 @@ function ActionPopoutMenuHeader({
         "pl-[calc(2px*var(--resolution-factor))]",
         "pr-[calc(16px*var(--resolution-factor))]",
         "bg-action-popout-menu-static-bg text-action-popout-menu-static-text font-normal",
-        className
+        className,
       )}
       {...props}
     >
@@ -93,7 +93,7 @@ function ActionPopoutMenuItem({
         "pr-[calc(16px*var(--resolution-factor))]",
         "bg-action-popout-menu-fg text-action-popout-menu-item-text font-normal",
         "hover:bg-action-popout-menu-item-hover data-highlighted:bg-action-popout-menu-item-hover",
-        className
+        className,
       )}
       {...props}
     >

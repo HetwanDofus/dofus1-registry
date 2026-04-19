@@ -1,6 +1,6 @@
+import type * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -24,8 +24,7 @@ const buttonVariants = cva(
           "rounded-[calc(4px*var(--resolution-factor))] px-[calc(4px*var(--resolution-factor))]",
       },
       borderColor: {
-        brown:
-          "border-button-border active:border-button-border-active",
+        brown: "border-button-border active:border-button-border-active",
         white:
           "border-button-white-border active:border-button-white-border-active",
       },
@@ -38,7 +37,8 @@ const buttonVariants = cva(
 );
 
 interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
