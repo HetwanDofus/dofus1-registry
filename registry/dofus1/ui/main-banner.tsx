@@ -927,30 +927,27 @@ function MainBannerMorePanel({
       : [];
 
   return (
-    <>
-      <div
-        className={cn(
-          "absolute",
-          "left-[calc(710px*var(--resolution-factor))]",
-          "top-[calc(8px*var(--resolution-factor))]",
-        )}
-      >
-        <MainBannerIconButton
-          icon={open ? "less" : "more"}
-          onClick={() => setOpen((o) => !o)}
-        />
-      </div>
+    <div
+      className={cn(
+        "absolute",
+        "left-[calc(710px*var(--resolution-factor))]",
+        "top-[calc(8px*var(--resolution-factor))]",
+      )}
+    >
+      <MainBannerIconButton
+        icon={open ? "less" : "more"}
+        onClick={() => setOpen((o) => !o)}
+      />
       {open && (
         <div
           className={cn(
-            "absolute z-20 bottom-full",
-            "left-[calc(704px*var(--resolution-factor))]",
+            "absolute z-20 bottom-[calc(100%+8px*var(--resolution-factor))] left-1/2 -translate-x-1/2",
             className,
           )}
         >
           <div
             className={cn(
-              "relative bg-main-banner-bg",
+              "bg-main-banner-bg",
               "border-x-[calc(2px*var(--resolution-factor))] border-t-[calc(2px*var(--resolution-factor))] border-main-banner-circle-border border-b-0",
               "rounded-t-[calc(10px*var(--resolution-factor))]",
               "flex flex-col items-center",
@@ -966,7 +963,7 @@ function MainBannerMorePanel({
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 
@@ -1029,8 +1026,15 @@ function MainBannerGridSlot({
         "w-[calc(25px*var(--resolution-factor))]",
         "h-[calc(25px*var(--resolution-factor))]",
         "bg-[#beb998] border-none",
-        "shadow-[inset_calc(1px*var(--resolution-factor))_calc(1px*var(--resolution-factor))_0_0_#877b63,inset_calc(-1px*var(--resolution-factor))_calc(-1px*var(--resolution-factor))_0_0_#d1ccb6]",
-        "hover:shadow-[inset_0_0_0_calc(2px*var(--resolution-factor))_#ff6600]",
+        // Bevel + hover ring are painted on an `::after` pseudo-element
+        // that sits ABOVE the icon canvas (pseudo-elements render after
+        // siblings). If we put the bevel on the slot itself with a plain
+        // `shadow-[inset]`, the icon canvas would paint on top of it and
+        // hide the bevel. `::after` keeps the icon visually INSIDE the
+        // bevel even when the icon fills the slot edge-to-edge.
+        "after:absolute after:inset-0 after:pointer-events-none",
+        "after:shadow-[inset_calc(1px*var(--resolution-factor))_calc(1px*var(--resolution-factor))_0_0_#877b63,inset_calc(-1px*var(--resolution-factor))_calc(-1px*var(--resolution-factor))_0_0_#d1ccb6]",
+        "hover:after:shadow-[inset_0_0_0_calc(2px*var(--resolution-factor))_#ff6600]",
         className,
       )}
       {...props}

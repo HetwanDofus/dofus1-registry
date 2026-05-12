@@ -237,6 +237,18 @@
       ]
     },
     {
+      "name": "console",
+      "type": "registry:ui",
+      "title": "Console",
+      "description": "Translucent black expandable debug console from Dofus 1.29 — three size states (minimized/medium/max), scrollable monospace log with recent/old line styling, white-pill X/_/0/C header buttons, and a prompt-prefixed input with submit/history/autocomplete hooks. Port of dofus.graphics.gapi.ui.Debug.",
+      "files": [
+        {
+          "path": "registry/dofus1/ui/console.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "spell-slot",
       "type": "registry:ui",
       "title": "SpellSlot",

@@ -119,7 +119,7 @@ function SideChatPanelFilterGroup({
         // is narrower than the filter list — the filters row (parent)
         // then grows in height instead of overflowing horizontally.
         "flex flex-row flex-wrap items-center flex-1 gap-1",
-        className,
+        className
       )}
       {...props}
     >

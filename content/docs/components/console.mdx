@@ -1,0 +1,144 @@
+---
+title: Console
+description: Translucent black expandable debug console — three size states, scrollable log, prompt-prefixed input. Port of Dofus 1.29 `dofus.graphics.gapi.ui.Debug`.
+---
+
+import { ConsoleDemo } from "@/components/console-demo";
+
+## Preview — Interactive
+
+The buttons are live. Cycle the size with **`_`**, clear logs with **`0`**, copy with **`C`**, close (and reopen) with **`X`**. Type a command and hit **Enter** to append a line; **↑ / ↓** cycle history, **Tab** does demo autocomplete.
+
+<PreviewCard className="!items-start">
+  <ConsoleDemo initialSize="medium" />
+</PreviewCard>
+
+## Preview — Max (starts expanded)
+
+<PreviewCard className="!items-start">
+  <ConsoleDemo
+    initialSize="max"
+    initialLogs={[
+      "--- session start 20:30 ---",
+      "logged in as gm.griefa",
+      "map 84,-31 loaded (Astrub Outpost)",
+      "spawn Bouftou Royal at (5, 7)",
+      "spawn Tofu at (4, 7)",
+      "set xp rate to 5.0",
+      "set drop rate to 3.0",
+      "player Akachauh teleported to (-1, 0)",
+      "player Aduns logged in from 88.121.4.*",
+      "player Aduns joined guild Frigost",
+      "warn Cheato24: chat spam (2/3)",
+      "banned Cheato24 for 7d (cause: third-party)",
+      "kick player Trolley (cause: idle 30 min)",
+      "broadcast: server restart in 15 min",
+      "granted +1500000 kamas to Akachauh",
+    ]}
+  />
+</PreviewCard>
+
+## Preview — Minimized (starts collapsed)
+
+<PreviewCard className="!items-start">
+  <ConsoleDemo initialSize="minimized" />
+</PreviewCard>
+
+## Installation
+
+```bash
+bunx shadcn@latest add console
+```
+
+## Composition
+
+`Console` is the root flex column and broadcasts the active `size` to descendants via context. The hierarchy is **three stacked rows** that match the FLA `UI_Debug` (Symbol 1153.xml):
+
+- `ConsoleButtons` — dedicated 20 px header row on the rounded-top translucent black surface. Holds the four `WhiteCrossButton` instances at FLA-defined order: close (`X`), minimize (`_`), clear (`0`), copy (`C`).
+- `ConsoleLogsArea` — the scrollable log row underneath. Collapses to `height: 0` when `size="minimized"`, expands to 200 px (`medium`) or 370 px (`max`). Same translucent black surface as the header — they read as one continuous rounded panel.
+- `ConsoleLogLine` — one entry. The `level` prop picks the color channel — `"default"` (white `#FFFFFF`, normal info), `"error"` (red `#FF0000`), or `"info"` (green `#00FF00`, success). These map 1:1 to the three branches of `Kernel.showMessage` that write to `aks_a_logs` (Kernel.as:407-429); the original stores each line as an HTML `<font color>` tag and the widget just renders the concatenated HTML.
+- `ConsoleInputRow` — rounded-bottom 20 px translucent white strip.
+- `ConsolePrompt` — the prompt label. Children become the prefix; the component appends `" > "` (Debug.as:38-47).
+- `ConsoleInput` — the command field. Submit on Enter, function-key callback on Tab / ↑ / ↓.
+
+### Size states
+
+| Prop value    | `ConsoleLogsArea` height | Total height |
+| ------------- | ------------------------ | ------------ |
+| `"minimized"` | `0px`                    | `40px` (20 header + 20 input) |
+| `"medium"`    | `200px`                  | `240px` |
+| `"max"`       | `370px`                  | `410px` |
+
+`Debug.changeSize` (Debug.as:329-335) cycles `(current + 1) % 3` through `medium → minimized → max`. See `components/console-demo.tsx` for a working state machine that wires close / minimize / clear / copy / submit / history.
+
+### Buttons
+
+All four buttons render as 16 × 14 white pills with a single-character label, matching `WhiteCrossButton` + `ButtonFlatRoundDown` (DofusStylePackage.as:94 / core.swf id 1728). The FLA defaults:
+
+| Component             | Label | AS button name |
+| --------------------- | ----- | -------------- |
+| `ConsoleCloseBtn`     | `"X"` | `_btnClose`    |
+| `ConsoleMinimizeBtn`  | `"_"` | `_btnMinimize` |
+| `ConsoleClearBtn`     | `"0"` | `_btnClear`    |
+| `ConsoleCopyBtn`      | `"C"` | `_btnCopy`     |
+
+Override the glyph via the `label` prop, or compose your own with the base `ConsoleButton` and any `onClick` handler.
+
+### Wiring an instance
+
+```tsx
+function MyConsole() {
+  const [size, setSize] = useState<ConsoleSize>("medium");
+  const [logs, setLogs] = useState<string[]>([]);
+  const cycle = () =>
+    setSize((s) =>
+      s === "medium" ? "minimized" : s === "minimized" ? "max" : "medium",
+    );
+
+  return (
+    <Console size={size}>
+      <ConsoleButtons>
+        <ConsoleCloseBtn onClick={() => /* unmount */ {}} />
+        <ConsoleMinimizeBtn onClick={cycle} />
+        <ConsoleClearBtn onClick={() => setLogs([])} />
+        <ConsoleCopyBtn
+          onClick={() => navigator.clipboard.writeText(logs.join("\n"))}
+        />
+      </ConsoleButtons>
+      <ConsoleLogsArea>
+        {logs.map((l, i) => (
+          <ConsoleLogLine key={i} recent={i === logs.length - 1}>
+            {l}
+          </ConsoleLogLine>
+        ))}
+      </ConsoleLogsArea>
+      <ConsoleInputRow>
+        <ConsolePrompt>debug</ConsolePrompt>
+        <ConsoleInput
+          onSubmit={(cmd) => setLogs((p) => [...p, `> ${cmd}`])}
+          onFunctionKey={(e) => {
+            if (e.code === "Tab") askShowAutoCompleteResult(api, e.currentPrompt);
+            if (e.code === "ArrowUp") doConsoleHistoryUp(api);
+            if (e.code === "ArrowDown") doConsoleHistoryDown(api);
+          }}
+        />
+      </ConsoleInputRow>
+    </Console>
+  );
+}
+```
+
+### Styling tokens
+
+| CSS variable                       | Value                       | Source |
+| ---------------------------------- | --------------------------- | ------ |
+| `--console-logs-bg`                | `rgba(0, 0, 0, 0.7)`        | `DebugLogsStylizedRectangle` (DofusStylePackage.as:359) |
+| `--console-input-bg`               | `rgba(255, 255, 255, 0.7)`  | `DebugCommandLineStylizedRectangle` (DofusStylePackage.as:360) |
+| `--console-log-default`            | `#ffffff`                   | `Kernel.as:408` `DEBUG_LOG` (white) |
+| `--console-log-error`              | `#ff0000`                   | `Kernel.as:416` `DEBUG_ERROR` (red) |
+| `--console-log-info`               | `#00ff00`                   | `Kernel.as:424` `DEBUG_INFO` (green) |
+| `--console-prompt`                 | `#000000`                   | `BlackLeftDebugLabel` (DofusStylePackage.as:98) |
+| `--console-button-bg`              | `#ffffff`                   | `WhiteCrossButton.bgcolor` (DofusStylePackage.as:94) |
+| `--console-button-bg-active`       | `#999999`                   | `WhiteCrossButton.bgdowncolor` |
+| `--console-button-fg`              | `#000000`                   | `BlackCenterSmallLabel.labelcolor` (DofusStylePackage.as:170) |
+| `--console-button-fg-active`       | `#514a3c`                   | `BrownCenterSmallLabel.labelcolor` (DofusStylePackage.as:169) |
